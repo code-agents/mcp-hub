@@ -1,0 +1,416 @@
+---
+title: 'Comparison of MCP Server Frameworks'
+description: 'A comprehensive comparison between TypeScript libraries for creating Model Context Protocol (MCP) servers, for both local and remote deployments.'
+---
+
+import { Card, Cards, Callout, Steps, Tabs, Tab } from 'nextra-theme-docs'
+
+# MCP Server Frameworks Comparison
+
+<Callout type="info">
+  The Model Context Protocol (MCP) is an open standard that standardizes how applications provide context to Large Language Models (LLMs). It follows a client-server architecture that enables AI models to safely access specific data and capabilities.
+</Callout>
+
+## Quick Selection Guide
+
+<Cards>
+  <Card title="@modelcontextprotocol/sdk" href="#modelcontextprotocolsdk">
+    Choose when you need the official implementation with maximum control and compliance.
+  </Card>
+  <Card title="Cloudflare agents" href="#cloudflare-agents">
+    Choose for stateful AI agents deployed on Cloudflare's edge network.
+  </Card>
+  <Card title="fastmcp" href="#fastmcp">
+    Choose when session management and production-ready features are critical.
+  </Card>
+  <Card title="mcp-framework" href="#mcp-framework">
+    Choose for convention-based development with excellent DX and CLI tooling.
+  </Card>
+</Cards>
+
+## Feature Comparison
+
+<Tabs items={['Summary Grid', 'Full Comparison Table']}>
+  <Tab>
+    | Feature                       | `@modelcontextprotocol/sdk` | `Cloudflare agents`        | `fastmcp`                   | `mcp-framework`             |
+    | :---------------------------- | :------------------------ | :------------------------- | :-------------------------- | :-------------------------- |
+    | **Primary Goal**              | Core MCP Implementation   | Stateful Edge AI Agents    | MCP Server w/ Sessions      | DX-focused MCP Framework    |
+    | **MCP Compliance**            | Official Standard         | Not MCP (Agent-focused)    | High                        | High (Uses official SDK)    |
+    | **Architecture**              | Low-level Primitives      | Actor Model (Workers)      | Session-centric             | Convention over Config      |
+    | **Transports**                | `stdio`, `HTTP (SSE)`     | `WebSockets`, `HTTP`       | `SSE`, `stdio`              | `stdio`, `SSE`, `HTTP Stream` |
+    | **State Management**          | Manual                    | Built-in (Durable Objects) | Session-based               | Manual/Per-Request          |
+    | **Authentication**            | Manual                    | Via Cloudflare Access      | Built-in                    | Built-in (SSE)              |
+    | **Developer Experience (DX)** | Foundational              | High (Integrated CF)       | High (Specific Features)    | High (CLI, Conventions)     |
+    | **CLI Tooling**               | None                      | `wrangler`                 | Testing utilities           | Yes (`mcp`)                 |
+    | **Deployment**                | Local/Any Server          | Cloudflare Workers         | Local/Any Server            | Local/Any Server            |
+  </Tab>
+  <Tab>
+    | Feature | @modelcontextprotocol/sdk | Cloudflare's "agents" | fastmcp | mcp-framework | Notes |
+    |---------|---------------------------|------------------------|---------|---------------|-------|
+    | **Protocol Compliance** | | | | | |
+    | MCP Specification Conformance | ◯ | ◯ | ◯ | ◯ | All implementations follow MCP spec |
+    | Tools Support | ◯ | ◯ | ◯ | ◯ | |
+    | Resources Support | ◯ | △ | ◯ | ◯ | Cloudflare: Limited support, coming soon |
+    | Prompts Support | ◯ | △ | ◯ | ◯ | Cloudflare: In development |
+    | Sampling Support | ◯ | △ | ◯ | △ | |
+    | **Transport Options** | | | | | |
+    | stdio | ◯ | ✗ | ◯ | ◯ | Cloudflare: Designed for remote use only |
+    | HTTP/SSE | ◯ | ◯ | ◯ | △ | |
+    | Streamable HTTP | △ | ◯ | △ | ✗ | Evolving transport method |
+    | WebSocket Support | ✗ | △ | ✗ | ✗ | Cloudflare: Planned for future |
+    | **Deployment** | | | | | |
+    | Local Deployment | ◯ | ✗ | ◯ | ◯ | |
+    | Remote Deployment | ◯ | ◯ | ◯ | △ | |
+    | Cloud Integration | △ | ◯ | △ | ✗ | Cloudflare: Native Workers integration |
+    | **Authentication & Security** | | | | | |
+    | Basic Authentication | ◯ | ◯ | ◯ | △ | |
+    | OAuth Support | △ | ◯ | △ | ✗ | Cloudflare: Built-in OAuth provider |
+    | Session Management | △ | ◯ | ◯ | △ | |
+    | **Developer Experience** | | | | | |
+    | Documentation Quality | ◯ | ◯ | ◯ | △ | |
+    | Examples & Templates | ◯ | ◯ | ◯ | △ | |
+    | TypeScript Support | ◯ | ◯ | ◯ | ◯ | |
+    | Type Safety | ◯ | ◯ | ◯ | ◯ | |
+    | CLI Testing Tools | △ | ◯ | ◯ | ✗ | |
+    | Hot Reloading | ✗ | ◯ | △ | ✗ | |
+    | **Features** | | | | | |
+    | Progress Notifications | ◯ | △ | ◯ | △ | |
+    | Error Handling | ◯ | ◯ | ◯ | △ | fastmcp: Comprehensive error handling |
+    | Logging | ◯ | ◯ | ◯ | △ | |
+    | CORS Support | △ | ◯ | ◯ | △ | |
+    | Image Content | ◯ | ◯ | ◯ | △ | |
+    | Automated SSE Pings | △ | ◯ | ◯ | ✗ | |
+    | Cancellation | ◯ | ◯ | ◯ | △ | |
+    | **Ecosystem** | | | | | |
+    | Community Support | ◯ | ◯ | ◯ | △ | @modelcontextprotocol: Official community |
+    | Active Development | ◯ | ◯ | ◯ | △ | |
+    | Production Readiness | ◯ | ◯ | ◯ | △ | |
+    | External Services Integration | △ | ◯ | △ | △ | Cloudflare: Worker integration with external APIs |
+
+    **Legend**
+    - ◯ Full support: Feature is fully implemented and well documented
+    - △ Partial support: Feature is partially implemented or in development
+    - ✗ No support: Feature is not supported or not applicable
+  </Tab>
+</Tabs>
+
+## Deployment Models
+
+<Tabs items={['Local MCP Servers', 'Remote MCP Servers']}>
+  <Tab>
+    ### Local MCP Servers
+
+    <Callout type="success">
+      **Advantages**
+      - Direct access to local files and resources
+      - No network latency
+      - Enhanced privacy (data stays on device)
+      - Simplified security model (no remote auth)
+      - Works offline
+    </Callout>
+
+    <Callout type="warning">
+      **Disadvantages**
+      - Limited to the local machine
+      - Requires installation on each user's device
+      - More challenging distribution
+      - Limited scalability
+    </Callout>
+
+    **Primary Communication Method**: stdio
+  </Tab>
+  <Tab>
+    ### Remote MCP Servers
+
+    <Callout type="success">
+      **Advantages**
+      - Accessible from anywhere
+      - Centralized deployment and updates
+      - Broader user reach
+      - Better scalability
+      - Shared resources across users
+    </Callout>
+
+    <Callout type="warning">
+      **Disadvantages**
+      - Requires internet connectivity
+      - More complex authentication requirements
+      - Potential privacy concerns
+      - Network latency
+    </Callout>
+
+    **Communication Methods**:
+    - HTTP with Server-Sent Events (SSE)
+    - Streamable HTTP
+    - WebSockets (in some implementations)
+  </Tab>
+</Tabs>
+
+## Framework Details
+
+### @modelcontextprotocolsdk
+
+The official TypeScript implementation of the Model Context Protocol, providing foundational building blocks for MCP server development.
+
+<Tabs items={['Overview', 'Key Features', 'Code Example']}>
+  <Tab>
+    **Core Purpose & Philosophy**:
+    - Provide the foundational building blocks for MCP server development in TypeScript
+    - Adhere strictly to the MCP specification
+    - Offer low-level control over server setup and behavior
+
+    **Best For**:
+    - Production-grade implementations
+    - Teams needing official support
+    - Projects requiring strict MCP specification compliance
+    - Developers who prefer using official implementations
+  </Tab>
+  <Tab>
+    - **Core Concepts**: `Server`, `Resource`, `Tool`, `Prompt` classes/interfaces
+    - **Transports**: Supports `stdio` for local communication and `HTTP` with Server-Sent Events (`SSE`) for web-based clients
+    - **Extensibility**: Designed to be extended by frameworks or used directly for custom server implementations
+    - **Minimalist**: Does not impose a specific project structure or include higher-level features like automatic discovery or built-in session management
+  </Tab>
+  <Tab>
+    ```typescript filename="snippets/mcp-sdk-example.ts"
+    import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+    import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+    import { z } from "zod";
+
+    // Define the schema for our add tool
+    const AddToolSchema = {
+      name: "add",
+      description: "Add two numbers together",
+      parameters: z.object({
+        a: z.number(),
+        b: z.number(),
+      }),
+    };
+
+    const server = new Server({ name: "example-server", version: "1.0.0" }, {
+      capabilities: { tools: {} }
+    });
+
+    // Register the add tool
+    server.setToolHandler(AddToolSchema, async (params) => {
+      const { a, b } = params;
+      const sum = a + b;
+      
+      return {
+        content: [{ type: "text", text: String(sum) }]
+      };
+    });
+
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
+    ```
+  </Tab>
+</Tabs>
+
+### Cloudflare agents
+
+A framework by Cloudflare for building stateful AI agents deployed on their edge network.
+
+<Tabs items={['Overview', 'Key Features', 'Code Example']}>
+  <Tab>
+    **Core Purpose & Philosophy**:
+    - Enable the creation of AI agents that maintain state, learn, and interact over time
+    - Leverage Cloudflare's global network (Workers, Durable Objects) for persistence and low-latency communication
+    - Focus on the *agent* paradigm rather than strictly adhering to MCP server/client structure
+
+    **Best For**:
+    - Remote MCP server deployments
+    - Organizations already using Cloudflare
+    - Developers wanting simplified deployment
+    - Applications needing OAuth-based authorization
+  </Tab>
+  <Tab>
+    - **State Management**: Built on Cloudflare Durable Objects for persistent agent state
+    - **Communication**: Real-time interaction via WebSockets, standard HTTP endpoints
+    - **Cloudflare Integration**: Deeply integrated with the Cloudflare ecosystem (Workers, AI Gateway, Vectorize, etc.)
+    - **React Hooks**: Provides hooks for easier integration with React frontends
+    - **Agent Lifecycle**: Agents can persist, hibernate when idle, and wake up when needed
+  </Tab>
+  <Tab>
+    ```typescript filename="snippets/cloudflare-agents-example.ts"
+    import { McpAgent } from "agents/mcp";
+    import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+    import { z } from "zod";
+
+    export class AdditionAgent extends McpAgent {
+      server = new McpServer({
+        name: "Addition Server",
+        version: "1.0.0",
+      });
+      
+      async init(): Promise<void> {
+        // Register a tool that adds two numbers
+        this.server.tool(
+          "add", 
+          { 
+            a: z.number().describe("First number to add"),
+            b: z.number().describe("Second number to add")
+          }, 
+          async ({ a, b }) => {
+            const sum = a + b;
+            return {
+              content: [{ type: "text", text: String(sum) }],
+            };
+          }
+        );
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### fastmcp
+
+A feature-rich TypeScript framework for building MCP servers with a focus on handling client sessions.
+
+<Tabs items={['Overview', 'Key Features', 'Code Example']}>
+  <Tab>
+    **Core Purpose & Philosophy**:
+    - Simplify MCP server creation in TypeScript
+    - Provide robust session management capabilities out-of-the-box
+    - Offer a rich set of features commonly needed in complex MCP applications
+
+    **Best For**:
+    - Production applications requiring rich features
+    - Projects needing streaming results or multi-step interactions
+    - Applications requiring user-specific sessions
+    - Developers preferring a more feature-complete framework
+  </Tab>
+  <Tab>
+    - **Session Management**: A key differentiator, allowing servers to maintain state across multiple interactions with a specific client
+    - **Feature Rich**: Includes built-in support for Authentication, Image content handling, Logging, Error handling, Progress notifications, Typed server events, and Sampling
+    - **Transport**: Supports `SSE` and `stdio`
+    - **Developer Focus**: Aims for simple definitions of MCP components
+  </Tab>
+  <Tab>
+    ```typescript filename="snippets/fastmcp-example.ts"
+    import { FastMCP } from "fastmcp";
+    import { z } from "zod";
+
+    // Create a server instance
+    const server = new FastMCP({
+      name: "Addition Server",
+      version: "1.0.0",
+    });
+
+    // Define and register a tool that adds two numbers
+    server.addTool({
+      name: "add",
+      description: "Add two numbers together",
+      parameters: z.object({
+        a: z.number().describe("First number to add"),
+        b: z.number().describe("Second number to add"),
+      }),
+      execute: async (args: { a: number; b: number }): Promise<string> => {
+        const sum = args.a + args.b;
+        return String(sum);
+      },
+    });
+
+    // Start the server with stdio transport
+    server.start({
+      transportType: "stdio",
+    });
+    ```
+  </Tab>
+</Tabs>
+
+### mcp-framework
+
+A framework built directly on top of the official `@modelcontextprotocol/sdk`, emphasizing developer experience through conventions and tooling.
+
+<Tabs items={['Overview', 'Key Features', 'Code Example']}>
+  <Tab>
+    **Core Purpose & Philosophy**:
+    - Provide an elegant and structured way to build MCP servers in TypeScript
+    - Reduce boilerplate through convention-over-configuration (automatic discovery)
+    - Offer helpful abstractions and CLI tooling
+
+    **Best For**:
+    - Rapid prototyping
+    - Developers focusing on business logic
+    - Projects preferring convention-based organization
+    - Teams that value CLI tooling for scaffolding
+  </Tab>
+  <Tab>
+    - **Automatic Discovery**: Scans predefined directories (`tools`, `resources`, `prompts`) to automatically load and register components
+    - **Base Classes**: Provides base classes to simplify the implementation of Tools, Resources, and Prompts
+    - **Multiple Transports**: Supports `stdio`, `SSE`, and `HTTP Stream`
+    - **CLI Tool**: Includes a powerful `mcp` CLI for project creation (`mcp create`) and scaffolding (`mcp add tool`, `mcp add prompt`, etc.)
+    - **Authentication**: Offers out-of-the-box authentication specifically for SSE endpoints
+  </Tab>
+  <Tab>
+    ```typescript filename="snippets/mcp-framework-example.ts"
+    // Assuming a project structure created with `mcp create my-server`
+    // File: src/tools/add.ts
+    import { Tool } from "mcp-framework";
+    import { z } from "zod";
+
+    export class Addition extends Tool {
+      // Tool metadata
+      name = "add";
+      description = "Add two numbers together";
+      
+      // Define the parameters schema with zod
+      parameters = z.object({
+        a: z.number().describe("First number to add"),
+        b: z.number().describe("Second number to add")
+      });
+
+      // Implementation of the tool
+      async execute({ a, b }: { a: number; b: number }): Promise<string> {
+        const sum = a + b;
+        return String(sum);
+      }
+    }
+
+    // The framework automatically discovers and registers this tool
+    // from the tools directory without manual registration
+    ```
+  </Tab>
+</Tabs>
+
+## Making Your Choice
+
+<Steps>
+  ### Assess Your Deployment Requirements
+  Determine whether you need a local or remote MCP server. This will narrow your options.
+
+  ### Consider Your Feature Needs
+  - Need maximum control? → `@modelcontextprotocol/sdk`
+  - Using Cloudflare's infrastructure? → `agents`
+  - Need robust session management? → `fastmcp`
+  - Want convention-based development? → `mcp-framework`
+
+  ### Evaluate Developer Experience
+  Consider your team's preferences for abstraction level, tooling, and conventions.
+
+  ### Check Compatibility
+  Ensure the chosen framework supports your required transports and deployment environments.
+</Steps>
+
+<Callout type="info">
+  All frameworks provide TypeScript support and adhere to the MCP specification, though with different focuses. Your specific use case should guide your selection.
+</Callout>
+
+## Further Resources
+
+<Cards>
+  <Card title="@modelcontextprotocol/sdk" href="https://github.com/modelcontextprotocol/typescript-sdk">
+    Official GitHub Repository
+  </Card>
+  <Card title="Cloudflare agents" href="https://github.com/cloudflare/agents">
+    Cloudflare agents GitHub Repository
+  </Card>
+  <Card title="fastmcp" href="https://github.com/punkpeye/fastmcp">
+    fastmcp GitHub Repository
+  </Card>
+  <Card title="mcp-framework" href="https://github.com/QuantGeekDev/mcp-framework">
+    mcp-framework GitHub Repository
+  </Card>
+</Cards> 

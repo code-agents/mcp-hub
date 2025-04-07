@@ -1,0 +1,49 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "MCP Hub",
+  "colors": {
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#2563EB"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "languages": [
+      {
+        "language": "en",
+        "groups": [
+          {
+            "group": "Start",
+            "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+          }
+        ]
+      },
+      {
+        "language": "ja",
+        "groups": [
+          {
+            "group": "スタート",
+            "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/MCPHubLogo.png",
+    "dark": "/logo/MCPHubLogo.png"
+  },
+  "navbar": {
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/gunta",
+      "github": "https://github.com/code-agents"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "agents": "^0.0.54",
+    "fastmcp": "^1.21.0",
+    "mcp-framework": "^0.2.11",
+    "mintlify": "^4.0.468",
+    "nextra": "^4.2.17"
+  },
+  "scripts": {
+    "dev": "mintlify dev"
+  }
+}
