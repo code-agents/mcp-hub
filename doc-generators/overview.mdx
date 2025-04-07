@@ -9,6 +9,14 @@ iconType: "solid"
 
 Documentation is a critical part of any MCP project. This section covers documentation generators with specific support for MCP applications.
 
+## Why MCP-Specific Generators Matter
+
+MCP-compatible documentation generators offer significant advantages over traditional Retrieval-Augmented Generation (RAG) approaches, particularly concerning context length efficiency.
+
+Traditional RAG often involves loading large portions of documentation into the AI's context window, much of which might be irrelevant to the specific task. This consumes valuable context space and can reduce the AI's focus.
+
+In contrast, MCP allows AI agents and IDEs to query specific pieces of information from the documentation server *as needed*. Instead of pre-loading potentially irrelevant data, the agent retrieves only the necessary details (like API usage, examples, or changelogs) precisely when required. This targeted retrieval keeps the context window lean and focused, leading to faster and more efficient task completion by the AI assistant. This approach mirrors the benefits seen with systems like the Mastra MCP documentation server, which enables agents to access a complete knowledge base without overwhelming their context ([Source: Introducing Mastra MCP Documentation Server](https://mastra.ai/blog/introducing-mastra-mcp)).
+
 ## <Icon icon="star" iconType="solid" /> MCP-Compatible Documentation Generators
 
 - <Icon icon="leaf" iconType="solid" /> **Mintlify**: A modern documentation platform used by this site, with built-in support for AI-related content and interactive examples
