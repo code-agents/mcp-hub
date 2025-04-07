@@ -25,7 +25,7 @@
           {
             "group": "Server Frameworks",
             "icon": "server",
-            "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+            "pages": ["server-frameworks/comparison"]
           },
           {
             "group": "Client Frameworks",

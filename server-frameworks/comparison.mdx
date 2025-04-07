@@ -89,10 +89,10 @@ Compare the frameworks side-by-side across various features.
     | Production Readiness | ◯ | ◯ | ◯ | ◯ | All are used in production |
     | External Services Integration | Manual | ◯ (Workers) | Manual | Manual | Cloudflare shines here |
 
-    **Legend**
-    - ◯ Full support / Built-in: Feature is well-implemented and documented.
-    - △ Partial / Manual / Basic: Feature exists but may require manual setup, is basic, or is under development.
-    - ✗ No support: Feature is not supported or not applicable.
+    **Legend:**
+    - ◯ **Full support / Built-in:** Feature is well-implemented and documented.
+    - △ **Partial / Manual / Basic:** Feature exists but may require manual setup, is basic, or is under development.
+    - ✗ **No support:** Feature is not supported or not applicable.
   </Tab>
 </Tabs>
 
@@ -351,7 +351,7 @@ Summarizing the ideal scenarios for choosing each framework.
 
 <Tabs items={['@modelcontextprotocol/sdk', 'Cloudflare agents', 'fastmcp', 'mcp-framework']}>
   <Tab title="@modelcontextprotocol/sdk">
-    **@modelcontextprotocol/sdk**
+    **Best For:**
     - **Production Implementations:** Where stability and official support are key.
     - **Strict Compliance:** Projects needing precise adherence to the MCP spec.
     - **Framework Builders:** As a foundation for creating higher-level MCP frameworks.
@@ -359,7 +359,7 @@ Summarizing the ideal scenarios for choosing each framework.
     - **Learning MCP:** Understanding the core protocol mechanics.
   </Tab>
   <Tab title="Cloudflare agents">
-    **Cloudflare agents**
+    **Best For:**
     - **Remote Deployment:** Specifically designed for cloud-hosted MCP servers.
     - **Cloudflare Ecosystem Users:** Organizations heavily invested in Cloudflare.
     - **Simplified Deployment/Scaling:** Leveraging Workers and Durable Objects.
@@ -367,7 +367,7 @@ Summarizing the ideal scenarios for choosing each framework.
     - **Stateful Agents:** When persistence and agent lifecycle are important.
   </Tab>
   <Tab title="fastmcp">
-    **fastmcp**
+    **Best For:**
     - **Feature-Rich Applications:** Needing built-in auth, sessions, logging, etc.
     - **Streaming / Multi-Step Interactions:** Where session management is beneficial.
     - **Production Focus:** Prioritizing stability and comprehensive features.
@@ -375,7 +375,7 @@ Summarizing the ideal scenarios for choosing each framework.
     - **Community Solution:** Preferring a popular, actively maintained community framework.
   </Tab>
   <Tab title="mcp-framework">
-    **mcp-framework**
+    **Best For:**
     - **Rapid Development:** Quickly scaffolding and building MCP servers.
     - **Convention Preference:** Teams preferring convention-over-configuration.
     - **Focus on Logic:** Abstracting away MCP boilerplate.
@@ -394,10 +394,10 @@ graph TD
     %% Define Styles
     classDef decision fill:#e0f2fe,stroke:#a5f3fc,stroke-width:1px,color:#075985,padding:10px 5px;
     classDef start fill:#d1fae5,stroke:#6ee7b7,stroke-width:1px,color:#065f46;
-    classDef cloudflare fill:#fef3c7,stroke:#fde68a,stroke-width:1px,color:#92400e,padding:10px 5px,border-radius:8px;   %% Orange
-    classDef fastmcp fill:#f3e8ff,stroke:#e9d5ff,stroke-width:1px,color:#6b21a8,padding:10px 5px,border-radius:8px;      %% Purple
-    classDef sdk fill:#dbeafe,stroke:#bfdbfe,stroke-width:1px,color:#1e40af,padding:10px 5px,border-radius:8px;         %% Blue
-    classDef mcpframework fill:#ccfbf1,stroke:#99f6e4,stroke-width:1px,color:#115e59,padding:10px 5px,border-radius:8px; %% Teal
+    classDef cloudflare fill:#fef3c7,stroke:#fde68a,stroke-width:1px,color:#92400e,padding:10px 5px,border-radius:8px;
+    classDef fastmcp fill:#f3e8ff,stroke:#e9d5ff,stroke-width:1px,color:#6b21a8,padding:10px 5px,border-radius:8px;
+    classDef sdk fill:#dbeafe,stroke:#bfdbfe,stroke-width:1px,color:#1e40af,padding:10px 5px,border-radius:8px;
+    classDef mcpframework fill:#ccfbf1,stroke:#99f6e4,stroke-width:1px,color:#115e59,padding:10px 5px,border-radius:8px;
 
     %% Nodes
     A(fa:fa-play Start Choosing) --> B{fa:fa-map-signs Deployment?<br/>Local or Remote?};
@@ -421,7 +421,6 @@ graph TD
     class H sdk;
     class I mcpframework;
 
-    %% Link Styles (Optional - Mermaid support varies)
     linkStyle default stroke:#9ca3af,stroke-width:2px;
 ```
 
