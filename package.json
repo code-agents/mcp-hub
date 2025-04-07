@@ -6,12 +6,16 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@modelcontextprotocol/sdk": "^1.9.0",
+    "ag-grid-community": "^33.2.1",
+    "ag-grid-react": "^33.2.1",
     "agents": "^0.0.54",
     "fastmcp": "^1.21.0",
     "lucide-react": "^0.487.0",
     "mcp-framework": "^0.2.11",
     "mintlify": "^4.0.468",
-    "nextra": "^4.2.17"
+    "nextra": "^4.2.17",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "scripts": {
     "dev": "mintlify dev"

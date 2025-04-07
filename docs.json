@@ -14,53 +14,59 @@
         "language": "en",
         "groups": [
           {
-            "group": "Getting Started",
-            "icon": "rocket",
-            "pages": ["introduction"]
-          },
-          {
-            "group": "About MCPVerified",
-            "pages": ["values/overview"]
-          },
-          {
-            "group": "Server Frameworks",
-            "icon": "server",
-            "pages": ["server-frameworks/comparison"]
-          },
-          {
-            "group": "Client Frameworks",
-            "icon": "desktop",
-            "pages": ["client-frameworks/overview"]
-          },
-          {
-            "group": "Development Environments",
-            "icon": "laptop-code",
-            "pages": ["hosts/overview"]
-          },
-          {
-            "group": "Authentication",
-            "icon": "key",
-            "pages": ["auth/overview"]
-          },
-          {
-            "group": "Infrastructure",
-            "icon": "cogs",
-            "pages": ["hosting/overview", "servers/overview"]
-          },
-          {
-            "group": "Documentation",
-            "icon": "book",
-            "pages": ["doc-generators/overview"]
-          },
-          {
-            "group": "Ecosystem",
-            "icon": "shopping-cart",
-            "pages": ["marketplaces/overview"]
-          },
-          {
-            "group": "Best Practices",
-            "icon": "shield-alt",
-            "pages": ["security/overview"]
+            "group": "Contents",
+            "pages": [
+              {
+                "group": "Getting Started",
+                "icon": "rocket",
+                "pages": ["introduction"]
+              },
+              {
+                "group": "About MCPVerified",
+                "icon": "circle-info",
+                "pages": ["values/overview"]
+              },
+              {
+                "group": "Server Frameworks",
+                "icon": "server",
+                "pages": ["server-frameworks/comparison"]
+              },
+              {
+                "group": "Client Frameworks",
+                "icon": "desktop",
+                "pages": ["client-frameworks/overview"]
+              },
+              {
+                "group": "Development Environments",
+                "icon": "laptop-code",
+                "pages": ["hosts/overview"]
+              },
+              {
+                "group": "Authentication",
+                "icon": "key",
+                "pages": ["auth/overview"]
+              },
+              {
+                "group": "Infrastructure",
+                "icon": "gears",
+                "pages": ["hosting/overview", "servers/overview"]
+              },
+              {
+                "group": "Documentation",
+                "icon": "book",
+                "pages": ["doc-generators/overview"]
+              },
+              {
+                "group": "Ecosystem",
+                "icon": "cart-shopping",
+                "pages": ["marketplaces/overview"]
+              },
+              {
+                "group": "Best Practices",
+                "icon": "shield-halved",
+                "pages": ["security/overview"]
+              }
+            ]
           }
         ]
       },
@@ -68,54 +74,59 @@
         "language": "ja",
         "groups": [
           {
-            "group": "はじめに",
-            "icon": "rocket",
-            "pages": ["ja/introduction"]
-          },
-          {
-            "group": "MCPVerifiedについて",
-            "icon": "info-circle",
-            "pages": ["values/ja/overview"]
-          },
-          {
-            "group": "サーバーフレームワーク",
-            "icon": "server",
-            "pages": ["server-frameworks/ja/comparison"]
-          },
-          {
-            "group": "クライアントフレームワーク",
-            "icon": "desktop",
-            "pages": ["client-frameworks/ja/overview"]
-          },
-          {
-            "group": "開発環境",
-            "icon": "laptop-code",
-            "pages": ["hosts/ja/overview"]
-          },
-          {
-            "group": "認証",
-            "icon": "key",
-            "pages": ["auth/ja/overview"]
-          },
-          {
-            "group": "インフラストラクチャー",
-            "icon": "cogs",
-            "pages": ["hosting/ja/overview", "servers/ja/overview"]
-          },
-          {
-            "group": "ドキュメント",
-            "icon": "book",
-            "pages": ["doc-generators/ja/overview"]
-          },
-          {
-            "group": "エコシステム",
-            "icon": "shopping-cart",
-            "pages": ["marketplaces/ja/overview"]
-          },
-          {
-            "group": "ベストプラクティス",
-            "icon": "shield-alt",
-            "pages": ["security/ja/overview"]
+            "group": "目次",
+            "pages": [
+              {
+                "group": "はじめに",
+                "icon": "rocket",
+                "pages": ["ja/introduction"]
+              },
+              {
+                "group": "MCPVerifiedについて",
+                "icon": "circle-info",
+                "pages": ["values/ja/overview"]
+              },
+              {
+                "group": "サーバーフレームワーク",
+                "icon": "server",
+                "pages": ["server-frameworks/ja/comparison"]
+              },
+              {
+                "group": "クライアントフレームワーク",
+                "icon": "desktop",
+                "pages": ["client-frameworks/ja/overview"]
+              },
+              {
+                "group": "開発環境",
+                "icon": "laptop-code",
+                "pages": ["hosts/ja/overview"]
+              },
+              {
+                "group": "認証",
+                "icon": "key",
+                "pages": ["auth/ja/overview"]
+              },
+              {
+                "group": "インフラストラクチャー",
+                "icon": "gears",
+                "pages": ["hosting/ja/overview", "servers/ja/overview"]
+              },
+              {
+                "group": "ドキュメント",
+                "icon": "book",
+                "pages": ["doc-generators/ja/overview"]
+              },
+              {
+                "group": "エコシステム",
+                "icon": "cart-shopping",
+                "pages": ["marketplaces/ja/overview"]
+              },
+              {
+                "group": "ベストプラクティス",
+                "icon": "shield-halved",
+                "pages": ["security/ja/overview"]
+              }
+            ]
           }
         ]
       }
