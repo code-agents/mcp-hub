@@ -80,7 +80,7 @@
           {
             "group": "サーバーフレームワーク",
             "icon": "server",
-            "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+            "pages": ["server-frameworks/ja/comparison"]
           },
           {
             "group": "クライアントフレームワーク",
