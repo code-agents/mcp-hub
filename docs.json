@@ -14,6 +14,10 @@
         "language": "en",
         "groups": [
           {
+            "group": "Welcome",
+            "pages": ["landing"]
+          },
+          {
             "group": "Contents",
             "pages": [
               {
@@ -73,6 +77,10 @@
       {
         "language": "ja",
         "groups": [
+          {
+            "group": "ようこそ",
+            "pages": ["ja/landing"]
+          },
           {
             "group": "目次",
             "pages": [
