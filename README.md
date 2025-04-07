@@ -1,32 +1,48 @@
-# Mintlify Starter Kit
+# MCPVerified
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+The definitive resource for Model Control Protocol (MCP) - Opinionated. Curated. Verified.
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## About
 
-### Development
+MCPVerified is your trusted guide to the Model Control Protocol ecosystem. We provide opinionated, carefully curated recommendations backed by real-world experience. Our core values include:
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+- **TypeScript First**: We believe TypeScript is the language of AI for production applications
+- **Security First**: We carefully vet all recommended services, packages, and servers
+- **Performance Matters**: MCP applications should be built with performance in mind from the beginning
+- **Developer Experience**: Tools and frameworks should prioritize excellent DX while maintaining production quality
 
+## Development
+
+This documentation site is built with [Mintlify](https://www.npmjs.com/package/mintlify). To preview the documentation locally:
+
+1. Install the Mintlify CLI:
 ```
 npm i -g mintlify
 ```
 
-Run the following command at the root of your documentation (where docs.json is)
-
+2. Run the following command at the root of this repository:
 ```
 mintlify dev
 ```
 
-### Publishing Changes
+## Contributing
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+We welcome contributions! To contribute:
 
-#### Troubleshooting
+1. Fork this repository
+2. Create a new branch for your feature
+3. Make your changes
+4. Submit a pull request
 
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+Please ensure your contributions align with our core values and maintain the high quality of information expected from MCPVerified.
+
+## Multilingual Support
+
+MCPVerified provides documentation in multiple languages:
+- English (default)
+- Japanese (日本語)
+
+## Troubleshooting
+
+- If Mintlify dev isn't running - Run `mintlify install` to re-install dependencies
+- If a page loads as a 404 - Make sure you are running in a folder with `docs.json`

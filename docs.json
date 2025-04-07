@@ -14,6 +14,10 @@
         "language": "en",
         "groups": [
           {
+            "group": "Getting Started",
+            "pages": ["introduction"]
+          },
+          {
             "group": "About MCPVerified",
             "pages": ["values/overview"]
           },
@@ -54,6 +58,10 @@
       {
         "language": "ja",
         "groups": [
+          {
+            "group": "はじめに",
+            "pages": ["ja/introduction"]
+          },
           {
             "group": "MCPVerifiedについて",
             "pages": ["values/ja/overview"]
