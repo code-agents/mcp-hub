@@ -2,6 +2,9 @@
 
 The definitive resource for Model Control Protocol (MCP) - Opinionated. Curated. Verified.
 
+![MCPVerified Hero Image](/logo/mcpv-hero.jpg)
+
+
 ## About
 
 MCPVerified is your trusted guide to the Model Control Protocol ecosystem. We provide opinionated, carefully curated recommendations backed by real-world experience. Our core values include:
