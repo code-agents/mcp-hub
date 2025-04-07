@@ -3,43 +3,43 @@ title: 'Comparison of MCP Server Implementations'
 description: 'A detailed comparison of popular approaches to create Model Context Protocol (MCP) servers, both for local and remote deployment.'
 ---
 
-# Comprehensive Comparison of MCP Server Implementations
+# <Icon icon="balance-scale" iconType="solid" color="#3B82F6" /> Comprehensive Comparison of MCP Server Implementations
 
 This document provides a detailed comparison of popular approaches to create Model Context Protocol (MCP) servers, both for local and remote deployment.
 
-## What is Model Context Protocol (MCP)?
+## <Icon icon="question-circle" iconType="solid" /> What is Model Context Protocol (MCP)?
 
 The Model Context Protocol (MCP) is an open standard that standardizes how applications provide context to Large Language Models (LLMs). It follows a client-server architecture:
 
-- **MCP Hosts**: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP
-- **MCP Clients**: Protocol clients that maintain 1:1 connections with servers
-- **MCP Servers**: Lightweight programs that expose specific capabilities through the MCP
-- **Local Data Sources**: Your computer's files, databases, and services that MCP servers can securely access
-- **Remote Services**: External systems available over the internet that MCP servers can connect to
+- <Icon icon="desktop" iconType="solid" /> **MCP Hosts**: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP
+- <Icon icon="plug" iconType="solid" /> **MCP Clients**: Protocol clients that maintain 1:1 connections with servers
+- <Icon icon="server" iconType="solid" /> **MCP Servers**: Lightweight programs that expose specific capabilities through the MCP
+- <Icon icon="database" iconType="solid" /> **Local Data Sources**: Your computer's files, databases, and services that MCP servers can securely access
+- <Icon icon="cloud" iconType="solid" /> **Remote Services**: External systems available over the internet that MCP servers can connect to
 
-## Comparison of MCP Server Implementations
+## <Icon icon="table" iconType="solid" /> Comparison of MCP Server Implementations
 
-### 1. @modelcontextprotocol/sdk
+### <Icon icon="code" iconType="solid" color="#3B82F6" /> 1. @modelcontextprotocol/sdk
 
-**Overview:**
+**<Icon icon="info-circle" iconType="solid" /> Overview:**
 - The official TypeScript SDK implementing the full MCP specification
 - Part of the Model Context Protocol organization
 - Provides foundation for building both clients and servers
 
-**Key Features:**
-- Full implementation of the MCP specification
-- Support for resources, tools, and prompts
-- Multiple transport options (stdio, HTTP with SSE)
-- Comprehensive protocol message handling
-- Server capability management
+**<Icon icon="star" iconType="solid" /> Key Features:**
+- <Icon icon="check" iconType="solid" /> Full implementation of the MCP specification
+- <Icon icon="tools" iconType="solid" /> Support for resources, tools, and prompts
+- <Icon icon="exchange-alt" iconType="solid" /> Multiple transport options (stdio, HTTP with SSE)
+- <Icon icon="network-wired" iconType="solid" /> Comprehensive protocol message handling
+- <Icon icon="cogs" iconType="solid" /> Server capability management
 
-**Best For:**
+**<Icon icon="thumbs-up" iconType="solid" /> Best For:**
 - Production-grade implementations
 - Teams needing official support
 - Projects requiring strict MCP specification compliance
 - Developers who prefer using official implementations
 
-**Usage Example:**
+**<Icon icon="code" iconType="solid" /> Usage Example:**
 ```javascript
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -58,25 +58,25 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
-**Deployment Options:**
-- Local deployment via stdio
-- Remote deployment via HTTP with SSE
-- Self-hosted environments
+**<Icon icon="rocket" iconType="solid" /> Deployment Options:**
+- <Icon icon="laptop" iconType="solid" /> Local deployment via stdio
+- <Icon icon="cloud" iconType="solid" /> Remote deployment via HTTP with SSE
+- <Icon icon="server" iconType="solid" /> Self-hosted environments
 
-### 2. Cloudflare's "agents"
+### <Icon icon="cloud" iconType="solid" color="#3B82F6" /> 2. Cloudflare's "agents"
 
-**Overview:**
+**<Icon icon="info-circle" iconType="solid" /> Overview:**
 - Cloudflare's implementation focused on simplifying MCP server deployment on Cloudflare Workers
 - Designed for cloud-based, remote MCP deployment
 - Part of Cloudflare's AI agent ecosystem
 
-**Key Features:**
-- `McpAgent` class for remote transport
-- Built-in OAuth provider for authorization
-- Automatic protocol handling and request routing
-- Stateful connections with Durable Objects
-- Remote transport support via HTTP+SSE (evolving to Streamable HTTP)
-- Support for future WebSocket connections
+**<Icon icon="star" iconType="solid" /> Key Features:**
+- <Icon icon="robot" iconType="solid" /> `McpAgent` class for remote transport
+- <Icon icon="key" iconType="solid" /> Built-in OAuth provider for authorization
+- <Icon icon="route" iconType="solid" /> Automatic protocol handling and request routing
+- <Icon icon="database" iconType="solid" /> Stateful connections with Durable Objects
+- <Icon icon="exchange-alt" iconType="solid" /> Remote transport support via HTTP+SSE (evolving to Streamable HTTP)
+- <Icon icon="plug" iconType="solid" /> Support for future WebSocket connections
 
 **Best For:**
 - Remote MCP server deployments
@@ -188,53 +188,53 @@ server.start({
 - Local deployment
 - Self-hosted environments
 
-## Local vs. Remote MCP Server Deployment
+## <Icon icon="balance-scale-right" iconType="solid" /> Local vs. Remote MCP Server Deployment
 
-### Local MCP Servers
+### <Icon icon="laptop" iconType="solid" /> Local MCP Servers
 
-**Advantages:**
-- Direct access to local files and resources
-- No network latency
-- Enhanced privacy (data stays on device)
-- Simplified security model (no remote auth)
-- Works offline
+**<Icon icon="plus-circle" iconType="solid" color="#22c55e" /> Advantages:**
+- <Icon icon="folder-open" iconType="solid" /> Direct access to local files and resources
+- <Icon icon="tachometer-alt" iconType="solid" /> No network latency
+- <Icon icon="user-shield" iconType="solid" /> Enhanced privacy (data stays on device)
+- <Icon icon="shield-alt" iconType="solid" /> Simplified security model (no remote auth)
+- <Icon icon="wifi" iconType="solid" /> Works offline
 
-**Disadvantages:**
-- Limited to the local machine
-- Requires installation on each user's device
-- More challenging distribution
-- Limited scalability
+**<Icon icon="minus-circle" iconType="solid" color="#ef4444" /> Disadvantages:**
+- <Icon icon="desktop" iconType="solid" /> Limited to the local machine
+- <Icon icon="download" iconType="solid" /> Requires installation on each user's device
+- <Icon icon="box" iconType="solid" /> More challenging distribution
+- <Icon icon="chart-line" iconType="solid" /> Limited scalability
 
-**Communication Method:**
+**<Icon icon="exchange-alt" iconType="solid" /> Communication Method:**
 - Primarily stdio
 
-### Remote MCP Servers
+### <Icon icon="globe" iconType="solid" /> Remote MCP Servers
 
-**Advantages:**
-- Accessible from anywhere
-- Centralized deployment and updates
-- Broader user reach
-- Better scalability
-- Shared resources across users
+**<Icon icon="plus-circle" iconType="solid" color="#22c55e" /> Advantages:**
+- <Icon icon="globe" iconType="solid" /> Accessible from anywhere
+- <Icon icon="sync" iconType="solid" /> Centralized deployment and updates
+- <Icon icon="users" iconType="solid" /> Broader user reach
+- <Icon icon="expand-arrows-alt" iconType="solid" /> Better scalability
+- <Icon icon="share-alt" iconType="solid" /> Shared resources across users
 
-**Disadvantages:**
-- Requires internet connectivity
-- More complex authentication requirements
-- Potential privacy concerns
-- Network latency
+**<Icon icon="minus-circle" iconType="solid" color="#ef4444" /> Disadvantages:**
+- <Icon icon="wifi" iconType="solid" /> Requires internet connectivity
+- <Icon icon="key" iconType="solid" /> More complex authentication requirements
+- <Icon icon="user-shield" iconType="solid" /> Potential privacy concerns
+- <Icon icon="clock" iconType="solid" /> Network latency
 
-**Communication Methods:**
-- HTTP with Server-Sent Events (SSE)
-- Evolving to Streamable HTTP
-- Potential future WebSocket support
+**<Icon icon="exchange-alt" iconType="solid" /> Communication Methods:**
+- <Icon icon="server" iconType="solid" /> HTTP with Server-Sent Events (SSE)
+- <Icon icon="stream" iconType="solid" /> Evolving to Streamable HTTP
+- <Icon icon="plug" iconType="solid" /> Potential future WebSocket support
 
-## Selection Guide
+## <Icon icon="map-signs" iconType="solid" /> Selection Guide
 
-### Choose @modelcontextprotocol/sdk when:
-- You need the official, fully spec-compliant implementation
-- Your project requires maximum compatibility
-- You prefer official support
-- You want a solid foundation for custom extension
+### <Icon icon="check-circle" iconType="solid" /> Choose @modelcontextprotocol/sdk when:
+- <Icon icon="certificate" iconType="solid" /> You need the official, fully spec-compliant implementation
+- <Icon icon="puzzle-piece" iconType="solid" /> Your project requires maximum compatibility
+- <Icon icon="headset" iconType="solid" /> You prefer official support
+- <Icon icon="tools" iconType="solid" /> You want a solid foundation for custom extension
 
 ### Choose Cloudflare's "agents" when:
 - You want to deploy a remote MCP server
