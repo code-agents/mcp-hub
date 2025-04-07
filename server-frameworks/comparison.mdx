@@ -33,8 +33,7 @@ This guide helps you quickly choose a framework based on its primary strengths:
 Compare the frameworks side-by-side across various features.
 
 <Tabs items={['Summary Grid', 'Detailed Feature Table']}>
-  <Tab>
-    **Summary**
+  <Tab title="Summary">
     | Feature                       | `@modelcontextprotocol/sdk` | `Cloudflare agents`        | `fastmcp`                   | `mcp-framework`             |
     | :---------------------------- | :------------------------ | :------------------------- | :-------------------------- | :-------------------------- |
     | **Primary Goal**              | Core MCP Implementation   | Stateful Edge AI Agents    | MCP Server w/ Sessions      | DX-focused MCP Framework    |
@@ -47,8 +46,7 @@ Compare the frameworks side-by-side across various features.
     | **CLI Tooling**               | None                      | `wrangler`                 | Testing utilities           | Yes (`mcp`)                 |
     | **Deployment**                | Local/Any Server          | Cloudflare Workers         | Local/Any Server            | Local/Any Server            |
   </Tab>
-  <Tab>
-    **Detailed Comparison**
+  <Tab title="Detailed Comparison">
     | Feature | @modelcontextprotocol/sdk | Cloudflare agents | fastmcp | mcp-framework | Notes |
     |---------|---------------------------|-------------------|---------|---------------|-------|
     | **Protocol Compliance** | | | | | |
@@ -103,7 +101,7 @@ Compare the frameworks side-by-side across various features.
 Understand the trade-offs between running your MCP server locally or remotely.
 
 <Tabs items={['Local MCP Servers', 'Remote MCP Servers']}>
-  <Tab>
+  <Tab title="Local MCP Servers">
     ### <Icon icon="desktop" iconType="solid" /> Local MCP Servers
 
     Run directly on the user's machine, typically communicating via `stdio`.
@@ -128,7 +126,7 @@ Understand the trade-offs between running your MCP server locally or remotely.
     **Primary Communication Method**: <Icon icon="terminal" iconType="solid" /> `stdio` (Standard Input/Output)
     **Best suited for**: `@modelcontextprotocol/sdk`, `fastmcp`, `mcp-framework`
   </Tab>
-  <Tab>
+  <Tab title="Remote MCP Servers">
     ### <Icon icon="globe" iconType="solid" /> Remote MCP Servers
 
     Hosted on a server or cloud platform, accessible over the network, typically via `HTTP/SSE`.
@@ -391,25 +389,44 @@ Summarizing the ideal scenarios for choosing each framework.
 
 Consider these factors when selecting your framework:
 
-<Steps>
-  ### <Icon icon="map-signs" iconType="solid" /> 1. Deployment: Local or Remote?
-  Where will your server run? This is often the first filter. (`Cloudflare agents` is remote-first, others support both).
+```mermaid
+graph TD
+    %% Define Styles
+    classDef decision fill:#e0f2fe,stroke:#a5f3fc,stroke-width:1px,color:#075985,padding:10px 5px;
+    classDef start fill:#d1fae5,stroke:#6ee7b7,stroke-width:1px,color:#065f46;
+    classDef cloudflare fill:#fef3c7,stroke:#fde68a,stroke-width:1px,color:#92400e,padding:10px 5px,border-radius:8px;   %% Orange
+    classDef fastmcp fill:#f3e8ff,stroke:#e9d5ff,stroke-width:1px,color:#6b21a8,padding:10px 5px,border-radius:8px;      %% Purple
+    classDef sdk fill:#dbeafe,stroke:#bfdbfe,stroke-width:1px,color:#1e40af,padding:10px 5px,border-radius:8px;         %% Blue
+    classDef mcpframework fill:#ccfbf1,stroke:#99f6e4,stroke-width:1px,color:#115e59,padding:10px 5px,border-radius:8px; %% Teal
 
-  ### <Icon icon="cogs" iconType="solid" /> 2. Feature Needs: Core vs. Batteries-Included?
-  Do you need just the basics (`@modelcontextprotocol/sdk`), or advanced features like sessions (`fastmcp`), cloud integration (`agents`), or auto-discovery (`mcp-framework`)?
+    %% Nodes
+    A(fa:fa-play Start Choosing) --> B{fa:fa-map-signs Deployment?<br/>Local or Remote?};
+    B -- Remote --> C{fa:fa-cloud Using Cloudflare?};
+    B -- Local --> D{fa:fa-history Stateful Sessions Needed?};
 
-  ### <Icon icon="users" iconType="solid" /> 3. State Management: Stateless or Stateful?
-  Does your server need to maintain state across requests for specific clients? (`fastmcp`, `agents` offer built-in solutions).
+    C -- Yes --> E(fa:fa-cloudflare **Cloudflare agents**<br/><i>Ideal for CF integration,<br/>stateful, remote</i>);
+    C -- No --> D;
 
-  ### <Icon icon="laptop-code" iconType="solid" /> 4. Developer Experience: Control vs. Convention?
-  Do you prefer low-level control (`@modelcontextprotocol/sdk`) or higher-level abstractions and tooling (`fastmcp`, `mcp-framework`, `agents`)?
+    D -- Yes --> F(fa:fa-sync **fastmcp**<br/><i>Strong session management,<br/>feature-rich</i>);
+    D -- No --> G{fa:fa-sliders-h Prioritize Control<br/>or DX/Convention?};
 
-  ### <Icon icon="cloud" iconType="solid" /> 5. Ecosystem Integration: Using Cloudflare?
-  If heavily using Cloudflare, `agents` offers significant advantages.
-</Steps>
+    G -- Max Control /<br/>Core Spec --> H(fa:fa-cogs **@modelcontextprotocol/sdk**<br/><i>Official SDK, foundational,<br/>max flexibility</i>);
+    G -- DX / Conventions /<br/>CLI --> I(fa:fa-laptop-code **mcp-framework**<br/><i>Focus on Developer Experience,<br/>conventions, CLI</i>);
+
+    %% Apply Styles
+    class A start;
+    class B,C,D,G decision;
+    class E cloudflare;
+    class F fastmcp;
+    class H sdk;
+    class I mcpframework;
+
+    %% Link Styles (Optional - Mermaid support varies)
+    linkStyle default stroke:#9ca3af,stroke-width:2px;
+```
 
 <Callout type="info">
-  <Icon icon="info-circle" iconType="solid" /> Remember, all these frameworks facilitate building MCP-compliant servers using TypeScript. The best choice depends on your specific project requirements, existing infrastructure, and team preferences. You can often start with one and potentially migrate if needs change significantly.
+  <Icon icon="info-circle" iconType="solid" /> Remember, all these frameworks facilitate building MCP-compliant servers using TypeScript. The best choice depends on your specific project requirements, existing infrastructure, and team preferences. This flowchart provides a starting point; review the detailed features and documentation for your top candidates.
 </Callout>
 
 ## <Icon icon="link" iconType="solid" /> Further Resources
