@@ -14,11 +14,6 @@
         "language": "en",
         "groups": [
           {
-            "group": "Home",
-            "pages": ["landing"],
-            "hidden": true
-          },
-          {
             "group": "Contents",
             "pages": [
               {
@@ -78,11 +73,6 @@
       {
         "language": "ja",
         "groups": [
-          {
-            "group": "ようこそ",
-            "pages": ["landing"],
-            "hidden": true
-          },
           {
             "group": "目次",
             "pages": [
