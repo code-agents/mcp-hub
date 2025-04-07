@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "MCP Hub",
+  "name": "MCPVerified",
   "colors": {
     "primary": "#3B82F6",
     "light": "#60A5FA",
@@ -14,8 +14,40 @@
         "language": "en",
         "groups": [
           {
-            "group": "Start",
+            "group": "About MCPVerified",
+            "pages": ["values/overview"]
+          },
+          {
+            "group": "Server Frameworks",
             "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+          },
+          {
+            "group": "Client Frameworks",
+            "pages": ["client-frameworks/overview"]
+          },
+          {
+            "group": "Development Environments",
+            "pages": ["hosts/overview"]
+          },
+          {
+            "group": "Authentication",
+            "pages": ["auth/overview"]
+          },
+          {
+            "group": "Infrastructure",
+            "pages": ["hosting/overview", "servers/overview"]
+          },
+          {
+            "group": "Documentation",
+            "pages": ["doc-generators/overview"]
+          },
+          {
+            "group": "Ecosystem",
+            "pages": ["marketplaces/overview"]
+          },
+          {
+            "group": "Best Practices",
+            "pages": ["security/overview"]
           }
         ]
       },
@@ -23,8 +55,40 @@
         "language": "ja",
         "groups": [
           {
-            "group": "スタート",
+            "group": "MCPVerifiedについて",
+            "pages": ["values/ja/overview"]
+          },
+          {
+            "group": "サーバーフレームワーク",
             "pages": ["server-frameworks/comparison", "server-frameworks/compare-claude"]
+          },
+          {
+            "group": "クライアントフレームワーク",
+            "pages": ["client-frameworks/ja/overview"]
+          },
+          {
+            "group": "開発環境",
+            "pages": ["hosts/ja/overview"]
+          },
+          {
+            "group": "認証",
+            "pages": ["auth/ja/overview"]
+          },
+          {
+            "group": "インフラストラクチャー",
+            "pages": ["hosting/ja/overview", "servers/ja/overview"]
+          },
+          {
+            "group": "ドキュメント",
+            "pages": ["doc-generators/ja/overview"]
+          },
+          {
+            "group": "エコシステム",
+            "pages": ["marketplaces/ja/overview"]
+          },
+          {
+            "group": "ベストプラクティス",
+            "pages": ["security/ja/overview"]
           }
         ]
       }
@@ -35,8 +99,8 @@
     }
   },
   "logo": {
-    "light": "/logo/MCPHubLogo.png",
-    "dark": "/logo/MCPHubLogo.png"
+    "light": "/logo/MCPVerifiedLogo.png",
+    "dark": "/logo/MCPVerifiedLogo.png"
   },
   "navbar": {
   },
