@@ -57,7 +57,7 @@
                 "pages": ["doc-generators/overview"]
               },
               {
-                "group": "Ecosystem",
+                "group": "Marketplaces",
                 "icon": "cart-shopping",
                 "pages": ["marketplaces/overview"]
               },

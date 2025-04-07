@@ -1,48 +1,50 @@
 ---
-title: 'MCP サーバーフレームワークの比較'
-description: 'ローカルおよびリモート展開向けのModel Context Protocol（MCP）サーバーを作成するためのTypeScriptライブラリの包括的な比較。'
+title: 'MCP サーバーフレームワーク比較'
+description: 'ローカルおよびリモート環境向けのModel Context Protocol（MCP）サーバーを構築するためのTypeScriptライブラリの総合比較'
+icon: "chart-bar"
+iconType: "solid"
 ---
 
-# <Icon icon="chart-bar" iconType="solid" color="#3B82F6" /> MCPサーバーフレームワークの比較
+# <Icon icon="chart-bar" iconType="solid" color="#3B82F6" /> MCPサーバーフレームワーク比較
 
 <Callout type="info">
-  <Icon icon="info-circle" iconType="solid" /> Model Context Protocol（MCP）は、アプリケーションが大規模言語モデル（LLM）にコンテキストを提供する方法を標準化するオープンスタンダードです。クライアント・サーバーアーキテクチャに従い、AIモデルが特定のデータや機能に安全にアクセスできるようにします。MCPにより、ホスト（IDEやAIツールなど）はクライアントを介してサーバー（機能を公開する軽量プログラム）と通信し、ローカルまたはリモートのデータソースに安全にアクセスできます。
+  <Icon icon="info-circle" iconType="solid" /> Model Context Protocol（MCP）は、アプリケーションが大規模言語モデル（LLM）にコンテキストを提供する方法を標準化するオープンスタンダードです。クライアント・サーバーアーキテクチャに基づいており、AIモデルが特定のデータや機能に安全にアクセスできるようにします。MCPを使うことで、ホスト（IDEやAIツールなど）はクライアントを介してサーバー（機能を提供する軽量プログラム）と通信し、ローカルまたはリモートのデータソースに安全にアクセスできます。
 </Callout>
 
 ## <Icon icon="bolt" iconType="solid" /> クイック選択ガイド
 
-このガイドは、主な強みに基づいてフレームワークをすばやく選択するのに役立ちます：
+このガイドは、主な特長に基づいてフレームワークを素早く選択するのに役立ちます：
 
 <Cards>
   <Card title="@modelcontextprotocol/sdk" href="#overview-philosophy">
-    <Icon icon="code" iconType="solid" /> **選ぶ理由:** 公式の仕様準拠の実装で最大限の制御が必要な場合。基礎的な作業や厳格な準拠が最も重要な場合に最適です。
+    <Icon icon="code" iconType="solid" /> **選ぶポイント:** 公式の仕様準拠の実装で最大限の制御が必要な場合。基礎的な作業や厳格な準拠が最も重要な場合に最適です。
   </Card>
   <Card title="Cloudflare agents" href="#overview-philosophy">
-    <Icon icon="cloud" iconType="solid" /> **選ぶ理由:** 特にCloudflareのエッジネットワーク上でステートフルなAIエージェントを展開する場合。Cloudflareとの統合と管理されたインフラストラクチャの恩恵を受けられます。
+    <Icon icon="cloud" iconType="solid" /> **選ぶポイント:** 特にCloudflareのエッジネットワーク上でステートフルなAIエージェントをデプロイする場合。Cloudflareとの統合と管理されたインフラを活用できます。
   </Card>
   <Card title="fastmcp" href="#overview-philosophy">
-    <Icon icon="tachometer-alt" iconType="solid" /> **選ぶ理由:** セッション管理、ストリーミング、本番環境向け機能（認証、ロギングなど）が重要な場合。すぐに使える豊富な機能セットを提供します。
+    <Icon icon="tachometer-alt" iconType="solid" /> **選ぶポイント:** セッション管理、ストリーミング、本番環境向け機能（認証、ロギングなど）が重要な場合。すぐに使える豊富な機能セットを提供します。
   </Card>
   <Card title="mcp-framework" href="#overview-philosophy">
-    <Icon icon="laptop-code" iconType="solid" /> **選ぶ理由:** 規約よりも設定、迅速な開発、CLIツールを好む場合。公式SDKの上に構築され、開発者体験に重点を置いています。
+    <Icon icon="laptop-code" iconType="solid" /> **選ぶポイント:** 規約よりも設定、迅速な開発、CLIツールを重視する場合。公式SDKの上に構築され、開発者体験を重視しています。
   </Card>
 </Cards>
 
 ## <Icon icon="list" iconType="solid" /> 機能比較
 
-さまざまな機能で各フレームワークを並べて比較します。
+さまざまな機能で各フレームワークを比較してみましょう。
 
 <Tabs items={['概要グリッド', '詳細機能表']}>
   <Tab title="概要">
     | 機能                         | `@modelcontextprotocol/sdk` | `Cloudflare agents`       | `fastmcp`                  | `mcp-framework`            |
     | :--------------------------- | :-------------------------- | :------------------------ | :------------------------- | :------------------------- |
-    | **主な目標**                  | コアMCP実装                  | ステートフルなエッジAIエージェント | セッション機能付きMCPサーバー   | 開発者体験重視のMCPフレームワーク |
+    | **主な目的**                  | コアMCP実装                  | ステートフルなエッジAIエージェント | セッション機能付きMCPサーバー   | 開発者体験重視のMCPフレームワーク |
     | **MCP準拠**                  | 公式標準                     | 高（エージェント重視）        | 高                         | 高（公式SDK使用）           |
     | **アーキテクチャ**            | 低レベルプリミティブ           | アクターモデル（Workers）    | セッション中心                | 規約よりも設定               |
     | **トランスポート**             | `stdio`, `HTTP (SSE)`      | `HTTP (SSE)`, `WebSockets` | `SSE`, `stdio`            | `stdio`, `SSE`, `HTTP Stream` |
     | **状態管理**                  | 手動                        | 組み込み（Durable Objects） | セッションベース              | 手動/リクエストごと          |
     | **認証**                     | 手動                        | Cloudflare Access/OAuth経由 | 組み込み                    | 組み込み（SSE）             |
-    | **開発者体験（DX）**           | 基礎的                      | 高（Cloudflare統合）        | 高（特定機能）               | 高（CLI、規約）             |
+    | **開発者体験（DX）**           | 基本的                      | 高（Cloudflare統合）        | 高（特定機能）               | 高（CLI、規約）             |
     | **CLIツール**                | なし                         | `wrangler`               | テストユーティリティ           | あり（`mcp`）               |
     | **デプロイメント**             | ローカル/任意サーバー          | Cloudflare Workers        | ローカル/任意サーバー          | ローカル/任意サーバー         |
   </Tab>
@@ -163,27 +165,27 @@ MCPサーバーをローカルまたはリモートで実行する際のトレ�
 
 ### <Icon icon="puzzle-piece" iconType="solid" /> 概要と哲学
 
-各フレームワークの背後にある主な目標と設計原則を理解します。
+各フレームワークの背後にある主な目的と設計原則を理解します。
 
 <Tabs items={['@modelcontextprotocol/sdk', 'Cloudflare agents', 'fastmcp', 'mcp-framework']}>
   <Tab title="@modelcontextprotocol/sdk">
     
-    - **目標:** MCP仕様の公式TypeScript実装を提供すること。
+    - **目的:** MCP仕様の公式TypeScript実装を提供すること。
     - **哲学:** 最大限の制御と厳格な仕様準拠のための低レベルプリミティブ（`Server`, `Resource`, `Tool`, `Prompt`）を提供。MCPコア以上の構造を強制しません。
     - **性質:** フルフレームワークではなく、ライブラリ/SDK。`mcp-framework`のような他のフレームワークの基盤を形成します。
   </Tab>
   <Tab title="Cloudflare agents">
-    - **目標:** Cloudflareのエッジネットワーク上でステートフルなAIエージェントを実現すること。
+    - **目的:** Cloudflareのエッジネットワーク上でステートフルなAIエージェントを実現すること。
     - **哲学:** 永続的で低レイテンシのエージェント通信のためにCloudflareインフラストラクチャ（Workers、Durable Objects）を活用。Cloudflareサービス（AI Gateway、Vectorize）と統合された*エージェント*パラダイムに焦点を当てています。MCPだけでなく、より広範なAIエコシステムの一部です。
     - **性質:** Cloudflareプラットフォームと密接に結合した特化型フレームワーク。
   </Tab>
   <Tab title="fastmcp">
-    - **目標:** 豊富な機能を備えた本番対応のMCPサーバー作成を簡素化すること。
+    - **目的:** 豊富な機能を備えた本番対応のMCPサーバー作成を簡素化すること。
     - **哲学:** 開発者体験と、セッション管理、認証、ロギング、エラー処理などの堅牢な機能をすぐに使える形で優先します。複雑なMCPアプリケーション向けの包括的なソリューションを目指しています。
     - **性質:** 機能が完備されたコミュニティ主導のフレームワーク。
   </Tab>
   <Tab title="mcp-framework">
-    - **目標:** 規約とツールを使用してMCPサーバー構築の開発者体験を向上させること。
+    - **目的:** 規約とツールを使用してMCPサーバー構築の開発者体験を向上させること。
     - **哲学:** `@modelcontextprotocol/sdk`*の上に*構築され、規約よりも設定（事前定義されたフォルダ内のツール/リソース/プロンプトの自動検出）によるボイラープレートの削減と、有用な抽象化とCLIツール（`mcp`コマンド）を提供します。
     - **性質:** 開発者体験と迅速な開発に焦点を当てた独自の考えを持つフレームワーク。
   </Tab>
