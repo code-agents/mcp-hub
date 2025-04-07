@@ -7,7 +7,7 @@
     "light": "#60A5FA",
     "dark": "#2563EB"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/m.png",
   "navigation": {
     "languages": [
       {
@@ -99,8 +99,8 @@
     }
   },
   "logo": {
-    "light": "/logo/MCPVerifiedLogo.png",
-    "dark": "/logo/MCPVerifiedLogo.png"
+    "light": "/logo/mcpv-light.png",
+    "dark": "/logo/mcpv-dark.png"
   },
   "navbar": {
   },
