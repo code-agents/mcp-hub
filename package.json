@@ -18,6 +18,8 @@
     "react-dom": "^19.1.0"
   },
   "scripts": {
-    "dev": "mintlify dev"
+    "dev": "mintlify dev",
+    "changelog": "node changelog-generator.js",
+    "predev": "npm run changelog"
   }
 }

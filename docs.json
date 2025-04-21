@@ -22,6 +22,11 @@
                 "pages": ["introduction"]
               },
               {
+                "group": "News & Updates",
+                "icon": "newspaper",
+                "pages": ["docs/changelog"]
+              },
+              {
                 "group": "About MCPVerified",
                 "icon": "circle-info",
                 "pages": ["values/overview"]
@@ -80,6 +85,11 @@
                 "group": "はじめに",
                 "icon": "rocket",
                 "pages": ["ja/introduction"]
+              },
+              {
+                "group": "ニュースと更新",
+                "icon": "newspaper",
+                "pages": ["docs/changelog"]
               },
               {
                 "group": "MCPVerifiedについて",
