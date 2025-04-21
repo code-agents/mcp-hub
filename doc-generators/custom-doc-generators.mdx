@@ -65,6 +65,36 @@ Key benefits include:
   GitMCP, mentioned in the GitHub-powered documentation servers category, is actually built on top of Cloudflare AutoRAG. This demonstrates how these managed RAG solutions can be used to create production-ready MCP documentation servers with relatively little effort.
 </Info>
 
+<Info>
+  <Icon icon="lightbulb" iconType="solid" /> **How AutoRAG Works**
+  
+  AutoRAG handles two core processes:
+  
+  1. **Indexing (Asynchronous Background Process)**:
+     - **Data Ingestion**: Reads from your connected data sources
+     - **Markdown Conversion**: Converts various file types into structured Markdown
+     - **Chunking**: Splits content into smaller pieces for better retrieval
+     - **Embedding**: Transforms chunks into vectors using Workers AI models
+     - **Vector Storage**: Stores vectors and metadata in Vectorize database
+  
+  2. **Querying (Real-time Synchronous Process)**:
+     - **Query Rewriting**: Optionally improves search queries using LLMs
+     - **Query Embedding**: Transforms queries into vectors for comparison
+     - **Vector Matching**: Finds the most relevant content chunks
+     - **Response Generation**: Uses retrieved context to generate accurate answers
+</Info>
+
+<Check>
+  <Icon icon="check-double" iconType="solid" /> **Key Advantages of RAG with AutoRAG**
+  
+  - **Accuracy Without Training**: Get accurate answers based on your latest documentation without model training
+  - **Reduced Hallucinations**: Ground AI responses in your actual documentation
+  - **Source Attribution**: Trace responses back to specific documentation sources
+  - **Knowledge Updates**: Documentation updates are automatically reflected in responses
+  - **Efficient Context Usage**: Only relevant information is retrieved, maximizing context window usage
+  - **Image Processing**: Can extract text and context from images in your documentation
+</Check>
+
 <CardGroup cols={2}>
   <Card title="Automated Indexing" icon="robot" iconType="solid">
     Set up your data sources once and AutoRAG will continuously monitor and index new content, keeping your documentation current.
@@ -78,15 +108,37 @@ Key benefits include:
 
 To create your own MCP documentation server using AutoRAG:
 
-1. **Configure Data Sources**: Connect your documentation repositories, websites, or content stores
-2. **Set Up Indexing**: Configure chunking, embedding, and indexing settings
-3. **Define Retrieval Parameters**: Customize relevance thresholds and context window parameters
-4. **Implement MCP Protocol**: Wrap the AutoRAG responses in the MCP protocol format
-5. **Deploy and Monitor**: Launch your server and monitor performance
+<Steps>
+  <Step title="Configure Data Sources">
+    Connect your documentation repositories, websites, or content stores. AutoRAG supports various sources including websites, GitHub repositories, and file storage systems.
+  </Step>
+  
+  <Step title="Set Up Indexing">
+    Configure chunking, embedding, and indexing settings. Determine how your content will be processed, including chunk size and overlap for optimal retrieval.
+  </Step>
+  
+  <Step title="Define Retrieval Parameters">
+    Customize relevance thresholds and context window parameters. Set the number of chunks to retrieve and minimum similarity scores to ensure accurate results.
+  </Step>
+  
+  <Step title="Implement MCP Protocol">
+    Wrap the AutoRAG responses in the MCP protocol format. Create endpoints that follow the MCP specification to enable seamless integration with AI assistants.
+  </Step>
+  
+  <Step title="Deploy and Monitor">
+    Launch your server and monitor performance. Track key metrics like query latency, relevance scores, and user satisfaction to continuously improve your documentation system.
+  </Step>
+</Steps>
 
 <Tip>
   Start with a small subset of your documentation to test the system before scaling to your entire knowledge base.
 </Tip>
+
+<Info>
+  <Icon icon="book" iconType="solid" /> **Further Resources**
+  
+  For complete implementation details, configuration options, and API references, be sure to follow the official [Cloudflare AutoRAG documentation](https://developers.cloudflare.com/autorag/). The documentation provides in-depth guides on data sources, indexing settings, query rewriting, similarity caching, and other advanced features.
+</Info>
 
 ## <Icon icon="circle-check" iconType="solid" color="#10B981" /> When to Choose Custom Solutions
 
