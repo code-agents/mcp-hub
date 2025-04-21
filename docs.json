@@ -54,7 +54,7 @@
               {
                 "group": "Documentation",
                 "icon": "book",
-                "pages": ["doc-generators/overview"]
+                "pages": ["doc-generators/overview", "doc-generators/mcp-compatible-generators", "doc-generators/github-powered-servers", "doc-generators/custom-doc-generators"]
               },
               {
                 "group": "Marketplaces",

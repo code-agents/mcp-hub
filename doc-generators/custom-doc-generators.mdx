@@ -1,0 +1,100 @@
+---
+title: 'Custom Documentation Generators'
+description: 'Create your own MCP documentation server by indexing your custom or private documentation'
+icon: "gears"
+iconType: "solid"
+---
+
+Beyond pre-built solutions, you can create your own **custom MCP documentation server** to index and serve private or specialized content that's tailored to your specific needs.
+
+## <Icon icon="lightbulb" iconType="solid" /> Why Build Custom Documentation Servers?
+
+While pre-built MCP-compatible generators and GitHub-powered MCP documentation servers cover many use cases, custom solutions offer unique advantages:
+
+- **Private Documentation**: Secure access to sensitive internal documentation
+- **Specialized Knowledge**: Index domain-specific knowledge bases
+- **Custom Integrations**: Connect with proprietary systems and data sources
+- **Fine-tuned Control**: Customize retrieval algorithms for your specific content structure
+
+<Note>
+  Custom documentation generators are ideal when you have unique requirements that aren't met by off-the-shelf solutions or when you need granular control over how your documentation is indexed and retrieved.
+</Note>
+
+## <Icon icon="cubes" iconType="solid" /> Examples of Custom MCP Documentation Servers
+
+### Mastra MCP Documentation Server
+
+The [Mastra MCP Documentation Server](https://mastra.ai/blog/introducing-mastra-mcp) is an excellent example of a custom-built solution. It enables AI agents to access a complete knowledge base without overwhelming their context windows, providing targeted information retrieval when needed.
+
+Key features include:
+- Real-time access to documentation
+- Efficient context window utilization
+- Support for complex query understanding
+- Continuous updates to documentation without retraining
+
+## <Icon icon="code" iconType="solid" /> Building Your Own MCP Documentation Server
+
+Creating a custom MCP documentation server typically involves these components:
+
+1. **Document Ingestion**: A system to collect and process your documentation
+2. **Text Processing**: Chunking, embedding, and indexing your content
+3. **Vector Database**: Storage for semantic search capabilities
+4. **Retrieval System**: Logic for finding relevant information
+5. **MCP Interface**: Endpoints that follow the MCP protocol
+
+<Warning>
+  Building a complete custom solution requires expertise in vector databases, embedding models, and MCP API specifications. Consider starting with managed tools that handle the infrastructure complexities.
+</Warning>
+
+## <Icon icon="cloud" iconType="solid" /> Using Managed RAG Solutions
+
+Instead of building everything from scratch, you can leverage managed Retrieval-Augmented Generation (RAG) services to create your MCP documentation server.
+
+### Cloudflare AutoRAG
+
+[Cloudflare AutoRAG](https://developers.cloudflare.com/autorag/) provides a fully-managed RAG pipeline that simplifies creating custom documentation systems.
+
+Key benefits include:
+
+- **Automated Indexing**: Continuously updates content without manual reprocessing
+- **Built-in Similarity Caching**: Improves response time for repeated queries
+- **Scalable Infrastructure**: Runs on Cloudflare's global network
+- **Easy Integration**: Connect through Workers binding or REST API
+
+<Info>
+  GitMCP, mentioned in the GitHub-powered documentation servers category, is actually built on top of Cloudflare AutoRAG. This demonstrates how these managed RAG solutions can be used to create production-ready MCP documentation servers with relatively little effort.
+</Info>
+
+<CardGroup cols={2}>
+  <Card title="Automated Indexing" icon="robot" iconType="solid">
+    Set up your data sources once and AutoRAG will continuously monitor and index new content, keeping your documentation current.
+  </Card>
+  <Card title="Worker Integration" icon="code" iconType="solid">
+    Easily integrate with Cloudflare Workers using native bindings to serve documentation to your AI agents.
+  </Card>
+</CardGroup>
+
+## <Icon icon="diagram-project" iconType="solid" /> Implementation Steps
+
+To create your own MCP documentation server using AutoRAG:
+
+1. **Configure Data Sources**: Connect your documentation repositories, websites, or content stores
+2. **Set Up Indexing**: Configure chunking, embedding, and indexing settings
+3. **Define Retrieval Parameters**: Customize relevance thresholds and context window parameters
+4. **Implement MCP Protocol**: Wrap the AutoRAG responses in the MCP protocol format
+5. **Deploy and Monitor**: Launch your server and monitor performance
+
+<Tip>
+  Start with a small subset of your documentation to test the system before scaling to your entire knowledge base.
+</Tip>
+
+## <Icon icon="circle-check" iconType="solid" color="#10B981" /> When to Choose Custom Solutions
+
+Custom documentation generators are most valuable when:
+
+- You have **sensitive information** that requires strict access controls
+- Your content has **unique structures** that need specialized processing
+- You need **specialized integration** with internal systems
+- Standard solutions don't provide enough **flexibility** for your use case
+
+By leveraging tools like Cloudflare AutoRAG or building custom infrastructure, you can create MCP-compatible documentation servers that perfectly align with your organization's needs while maintaining the efficiency advantages of the MCP approach. 

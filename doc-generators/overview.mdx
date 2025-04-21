@@ -7,177 +7,63 @@ iconType: "solid"
 
 # <Icon icon="book" iconType="solid" color="#3B82F6" /> Documentation Generators
 
-Documentation is a critical part of any MCP project. This section covers documentation generators with specific support for MCP applications.
+Documentation is a **critical component** of any successful MCP project. This section will help you choose the right tools for your documentation needs.
 
-## Why MCP-Specific Generators Matter
+## <Icon icon="info-circle" iconType="solid" /> Overview
 
-MCP-compatible documentation generators offer significant advantages over traditional Retrieval-Augmented Generation (RAG) approaches, particularly concerning context length efficiency.
+Documentation generators for MCP applications are specialized tools designed to create high-quality, interactive documentation that seamlessly integrates with AI assistants.
 
-Traditional RAG often involves loading large portions of documentation into the AI's context window, much of which might be irrelevant to the specific task. This consumes valuable context space and can reduce the AI's focus.
+MCP documentation generators can be divided into three main categories:
 
-In contrast, MCP allows AI agents and IDEs to query specific pieces of information from the documentation server *as needed*. Instead of pre-loading potentially irrelevant data, the agent retrieves only the necessary details (like API usage, examples, or changelogs) precisely when required. This targeted retrieval keeps the context window lean and focused, leading to faster and more efficient task completion by the AI assistant. This approach mirrors the benefits seen with systems like the Mastra MCP documentation server, which enables agents to access a complete knowledge base without overwhelming their context ([Source: Introducing Mastra MCP Documentation Server](https://mastra.ai/blog/introducing-mastra-mcp)).
+<CardGroup cols={3}>
+  <Card 
+    title="MCP-Compatible Generators" 
+    icon="puzzle-piece" 
+    iconType="solid"
+    href="./mcp-compatible-generators"
+  >
+    Specialized tools like Mintlify, Speakeasy, and Stainless that provide features specifically designed for documenting AI-related projects.
+  </Card>
+  <Card 
+    title="GitHub-Powered MCP Docs Servers" 
+    icon="github" 
+    iconType="brands"
+    href="./github-powered-servers"
+  >
+    Tools like Context7 and GitMCP that turn open-source repositories into MCP servers, allowing AI assistants to access documentation on demand.
+  </Card>
+  <Card 
+    title="Custom Documentation Generators" 
+    icon="gears" 
+    iconType="solid"
+    href="./custom-doc-generators"
+  >
+    Build your own MCP documentation server by indexing custom or private documentation using tools like Cloudflare AutoRAG.
+  </Card>
+</CardGroup>
 
-## <Icon icon="star" iconType="solid" /> MCP-Compatible Documentation Generators
+## <Icon icon="chart-line" iconType="solid" /> Why MCP-Specific Generators Matter
 
-- <Icon icon="leaf" iconType="solid" /> **Mintlify**: A modern documentation platform used by this site, with built-in support for AI-related content and interactive examples
-- <Icon icon="microphone-alt" iconType="solid" /> **Speakeasy**: API documentation generator with special features for documenting AI endpoints and capabilities
-- <Icon icon="shield-alt" iconType="solid" /> **Stainless**: Documentation tooling focused on robust API references and SDK documentation for MCP services
+<Note>
+  MCP-compatible documentation generators offer significant advantages over traditional Retrieval-Augmented Generation (RAG) approaches, particularly concerning context length efficiency.
+</Note>
 
-These documentation tools provide specialized features for describing, demonstrating, and documenting the unique aspects of MCP applications like API endpoints, model capabilities, and interaction patterns.
+### <Icon icon="triangle-exclamation" iconType="solid" color="#EF4444" /> Traditional RAG Limitations
 
-## <Icon icon="github" iconType="brands" /> GitHub‑Powered MCP Documentation Servers
+Traditional RAG often involves loading **large portions of documentation** into the AI's context window, much of which might be irrelevant to the specific task. This consumes valuable context space and can reduce the AI's focus.
 
-Sometimes you don't *write* the docs yourself – you simply want the full, up‑to‑date documentation of an **open‑source library on GitHub** available to your AI assistant.  The two community projects below turn *any* repository into a remote MCP server that streams documentation on demand.
+### <Icon icon="puzzle-piece" iconType="solid" color="#3B82F6" /> MCP Advantages
 
-### <Icon icon="rocket" iconType="solid" /> Context7
+In contrast, MCP allows AI agents and IDEs to **query specific pieces of information** from the documentation server *as needed*. Instead of pre-loading potentially irrelevant data, the agent retrieves only the necessary details (like API usage, examples, or changelogs) precisely when required.
 
-Context7 automatically ingests popular open‑source libraries (and many private ones too) and exposes them as remote MCP servers.
+### <Icon icon="bolt" iconType="solid" color="#10B981" /> Efficiency Benefits
 
-<Tabs items={['Cursor', 'Windsurf', 'VSCode', 'Claude Desktop']}>
-  <Tab title="Cursor">
-    Add a MCP server in `~/.cursor/mcp.json`:
+This targeted retrieval keeps the context window lean and focused, leading to **faster and more efficient task completion** by the AI assistant. This approach mirrors the benefits seen with systems like the Mastra MCP documentation server, which enables agents to access a complete knowledge base without overwhelming their context.
 
-    ```json
-    {
-      "mcpServers": {
-        "context7": {
-          "command": "npx",
-          "args": ["-y", "@upstash/context7-mcp@latest"]
-        }
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="Windsurf">
-    Add this to your Windsurf MCP config file:
+<Warning>
+  Using non-MCP-compatible documentation generators may result in less efficient context utilization and degraded AI assistant performance when working with complex projects.
+</Warning>
 
-    ```json
-    {
-      "mcpServers": {
-        "context7": {
-          "command": "npx",
-          "args": ["-y", "@upstash/context7-mcp@latest"]
-        }
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="Cline">
-    Add this to your Cline MCP config file:
+## <Icon icon="check-circle" iconType="solid" color="#10B981" /> Recommendation
 
-    ```json
-    {
-        "mcpServers": {
-            "context7": {
-                "command": "npx",
-                "args": ["-y", "@upstash/context7-mcp@latest"],
-                "disabled": false,
-                "autoApprove": []
-            }
-        }
-    }
-    ```
-  </Tab>
-  <Tab title="VSCode">
-    Add this to your VSCode MCP config file:
-
-    ```json
-    {
-        "servers": {
-            "Context7": {
-                "type": "stdio",
-                "command": "npx",
-                "args": ["-y", "@upstash/context7-mcp@latest"]
-            }
-        }
-    }
-    ```
-  </Tab>
-</Tabs>
-
-#### Example: Using Context7 with Three.js
-
-After installing Context7, you can prompt your AI assistant to use Three.js documentation like this:
-
-```
-Can you help me create a basic Three.js scene with a rotating cube?
-Use context7
-```
-
-The AI will then dynamically query Context7 for relevant Three.js documentation as it helps you.
-
-### <Icon icon="code-branch" iconType="solid" /> GitMCP.io
-
-[GitMCP](https://gitmcp.io) lets you turn **any public GitHub repository** into a fully‑featured MCP server just by changing the domain from `github.com` → `gitmcp.io` (or `github.io` → `gitmcp.io`).  No build step, no package installs.
-
-<Tabs items={['Cursor', 'Windsurf', 'VSCode', 'Claude Desktop']}>
-  <Tab title="Cursor">
-    ```json
-    {
-      "mcpServers": {
-        "threejs": {
-          "url": "https://gitmcp.io/mrdoob/three.js"
-        }
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="Windsurf">
-    ```json
-    {
-      "mcpServers": {
-        "threejs": {
-          "serverUrl": "https://gitmcp.io/mrdoob/three.js"
-        }
-      }
-    }
-    ```
-  </Tab>
-  <Tab title="Cline">
-  ```json
-    {
-        "mcpServers": {
-            "threejs": {
-                "url": "https://gitmcp.io/mrdoob/three.js",
-                "disabled": false,
-                "autoApprove": []
-            }
-        }
-    }
-}
-    ```
- </Tab>
-
-  <Tab title="VSCode">
-    ```json
-    {
-      "servers": {
-        "threejs": {
-          "type": "sse",
-          "url": "https://gitmcp.io/mrdoob/three.js"
-        }
-      }
-    }
-    ```
-  </Tab>
-</Tabs>
-
-#### Three.js Example Prompt
-
-Once either MCP server is configured, the following **single‑shot prompt** in Cursor + Claude illustrates the improvement:
-
-> Build a Three.js scene featuring a controllable realistic person navigating a textured dynamic urban environment with realistic lighting and subtle bloom effects. Ensure keyboard controls (WASD) for movement.
-
-#### Side‑by‑Side Result (GitMCP vs. No GitMCP)
-
-<iframe
-  src="gitmcp-threejs.mp4"
-  title="GitMCP vs No GitMCP – Three.js demo"
-  width="550"
-  height="206"
-  style={{ width: '100%', height: 'auto', aspectRatio: '2872/1080', border: '0', borderRadius: '0.5rem' }}
-></iframe>
-
-<Callout type="info">
-  <Icon icon="info-circle" iconType="solid" /> **Why it matters** – by streaming the full Three.js documentation on demand, GitMCP gives the LLM precise API details (e.g. `GLTFLoader`, `DirectionalLight.castShadow`, `EffectComposer`) that would otherwise be unavailable or outdated, resulting in dramatically higher‑quality code generation.
-</Callout> 
+For the best results, choose a documentation generator **specifically designed** to work well with MCP systems and AI assistants. The right documentation tool will significantly enhance your AI assistant's ability to provide accurate, contextual help to users. 

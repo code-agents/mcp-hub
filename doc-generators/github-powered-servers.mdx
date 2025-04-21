@@ -1,0 +1,177 @@
+---
+title: 'GitHub-Powered MCP Documentation Servers'
+description: 'Tools that turn GitHub repositories into MCP documentation servers'
+icon: "github"
+iconType: "brands"
+---
+
+Sometimes you don't *write* the docs yourself – you simply want the full, up‑to‑date documentation of an **open‑source library on GitHub** available to your AI assistant. The community projects below turn *any* repository into a remote MCP server that streams documentation on demand.
+
+<Callout type="warning">
+  <Icon icon="clock" iconType="solid" /> **First-Time Processing** – If a repository hasn't been previously indexed by Context7 or GitMCP, it may take some time (typically a few minutes) for the initial processing to complete as the system performs autoindexing and RAG preparation of the content.
+</Callout>
+
+## Available Tools
+
+### <Icon icon="rocket" iconType="solid" /> Context7
+
+Context7 automatically ingests popular open‑source libraries (and many private ones too) and exposes them as remote MCP servers.
+
+<Tabs items={['Cursor', 'Windsurf', 'VSCode', 'Claude Desktop']}>
+  <Tab title="Cursor">
+    Add a MCP server in `~/.cursor/mcp.json`:
+
+    ```json
+    {
+      "mcpServers": {
+        "context7": {
+          "command": "npx",
+          "args": ["-y", "@upstash/context7-mcp@latest"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Windsurf">
+    Add this to your Windsurf MCP config file:
+
+    ```json
+    {
+      "mcpServers": {
+        "context7": {
+          "command": "npx",
+          "args": ["-y", "@upstash/context7-mcp@latest"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Cline">
+    Add this to your Cline MCP config file:
+
+    ```json
+    {
+        "mcpServers": {
+            "context7": {
+                "command": "npx",
+                "args": ["-y", "@upstash/context7-mcp@latest"],
+                "disabled": false,
+                "autoApprove": []
+            }
+        }
+    }
+    ```
+  </Tab>
+  <Tab title="VSCode">
+    Add this to your VSCode MCP config file:
+
+    ```json
+    {
+        "servers": {
+            "Context7": {
+                "type": "stdio",
+                "command": "npx",
+                "args": ["-y", "@upstash/context7-mcp@latest"]
+            }
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+#### Example: Using Context7 with Three.js
+
+After installing Context7, you can prompt your AI assistant to use Three.js documentation like this:
+
+```
+Can you help me create a basic Three.js scene with a rotating cube?
+Use context7
+```
+
+The AI will then dynamically query Context7 for relevant Three.js documentation as it helps you.
+
+### <Icon icon="code-branch" iconType="solid" /> GitMCP.io
+
+[GitMCP](https://gitmcp.io) lets you turn **any public GitHub repository** into a fully‑featured MCP server just by changing the domain from `github.com` → `gitmcp.io` (or `github.io` → `gitmcp.io`).  No build step, no package installs.
+
+<Tabs items={['Cursor', 'Windsurf', 'VSCode', 'Claude Desktop']}>
+  <Tab title="Cursor">
+    ```json
+    {
+      "mcpServers": {
+        "threejs": {
+          "url": "https://gitmcp.io/mrdoob/three.js"
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Windsurf">
+    ```json
+    {
+      "mcpServers": {
+        "threejs": {
+          "serverUrl": "https://gitmcp.io/mrdoob/three.js"
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Cline">
+  ```json
+    {
+        "mcpServers": {
+            "threejs": {
+                "url": "https://gitmcp.io/mrdoob/three.js",
+                "disabled": false,
+                "autoApprove": []
+            }
+        }
+    }
+}
+    ```
+ </Tab>
+
+  <Tab title="VSCode">
+    ```json
+    {
+      "servers": {
+        "threejs": {
+          "type": "sse",
+          "url": "https://gitmcp.io/mrdoob/three.js"
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Example: Three.js Documentation
+
+Once either MCP server is configured, the following **single‑shot prompt** in Cursor + Claude illustrates the improvement:
+
+> Build a Three.js scene featuring a controllable realistic person navigating a textured dynamic urban environment with realistic lighting and subtle bloom effects. Ensure keyboard controls (WASD) for movement.
+
+### Side‑by‑Side Result (GitMCP vs. No GitMCP)
+
+<iframe
+  src="gitmcp-threejs.mp4"
+  title="GitMCP vs No GitMCP – Three.js demo"
+  width="550"
+  height="206"
+  style={{ width: '100%', height: 'auto', aspectRatio: '2872/1080', border: '0', borderRadius: '0.5rem' }}
+></iframe>
+
+<Callout type="info">
+  <Icon icon="info-circle" iconType="solid" /> **Why it matters** – by streaming the full Three.js documentation on demand, GitMCP gives the LLM precise API details (e.g. `GLTFLoader`, `DirectionalLight.castShadow`, `EffectComposer`) that would otherwise be unavailable or outdated, resulting in dramatically higher‑quality code generation.
+</Callout>
+
+## Benefits of GitHub-Powered MCP Servers
+
+These tools offer several advantages:
+
+- **Zero Documentation Effort**: Use existing documentation from any GitHub repository
+- **Always Up-to-Date**: Documentation is pulled directly from the latest repository version
+- **On-Demand Access**: AI assistants query only what they need when they need it
+- **Broad Compatibility**: Works with virtually any open-source project on GitHub
+- **Simplified Integration**: Easy to add to your IDE or AI assistant 
