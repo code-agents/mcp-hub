@@ -104,7 +104,7 @@
               {
                 "group": "ドキュメント",
                 "icon": "book",
-                "pages": ["doc-generators/ja/overview"]
+                "pages": ["doc-generators/ja/overview", "doc-generators/ja/mcp-compatible-generators", "doc-generators/ja/github-powered-servers", "doc-generators/ja/custom-doc-generators"]
               },
               {
                 "group": "サーバーフレームワーク",
