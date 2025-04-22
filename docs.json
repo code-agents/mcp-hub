@@ -67,6 +67,11 @@
                 "pages": ["marketplaces/overview"]
               },
               {
+                "group": "UI Components",
+                "icon": "palette",
+                "pages": ["ui/overview"]
+              },
+              {
                 "group": "Security",
                 "icon": "shield-halved",
                 "pages": ["security/overview", "security/tools"]
@@ -125,6 +130,11 @@
                 "group": "ドキュメント",
                 "icon": "book",
                 "pages": ["doc-generators/ja/overview"]
+              },
+              {
+                "group": "UIコンポーネント",
+                "icon": "palette",
+                "pages": ["ui/ja/overview"]
               },
               {
                 "group": "エコシステム",
