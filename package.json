@@ -15,7 +15,7 @@
     "fastmcp": "^1.22.2",
     "lucide-react": "^0.503.0",
     "mcp-framework": "^0.2.11",
-    "mintlify": "^4.0.496",
+    "mintlify": "^4.0.497",
     "nextra": "^4.2.17"
   },
   "scripts": {

@@ -144,7 +144,7 @@
               {
                 "group": "セキュリティ",
                 "icon": "shield-halved",
-                "pages": ["security/ja/overview"]
+                "pages": ["security/ja/overview", "security/ja/tools"]
               }
             ]
           }
