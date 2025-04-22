@@ -1,0 +1,100 @@
+---
+title: 'MCP Security Tools'
+description: 'Tools and solutions for securing MCP applications'
+icon: "toolbox"
+iconType: "solid"
+---
+
+Several specialized tools are available to help secure your MCP applications. This page provides an overview of the most popular security tools and compares their features.
+
+## <Icon icon="radar" iconType="solid" /> Available Security Tools
+
+### MCP-Scan
+
+MCP-Scan is a security scanning tool that inspects your MCP servers for common vulnerabilities like prompt injections, tool poisoning, and cross-origin escalations.
+
+**Key Features:**
+- Scans Claude, Cursor, Windsurf, and other file-based MCP client configurations
+- Detects prompt injection attacks in tool descriptions
+- Identifies tool poisoning vulnerabilities using Invariant Guardrails
+- Detects cross-origin escalation attacks (tool shadowing)
+- Implements "Tool Pinning" to prevent MCP rug pull attacks
+
+**Usage:**
+```bash
+# Quick scan
+uvx mcp-scan@latest
+
+# Inspect tool descriptions
+uvx mcp-scan@latest inspect
+
+# Whitelist specific tools
+uvx mcp-scan@latest whitelist NAME HASH
+```
+
+### MCPScan.ai
+
+MCPScan.ai is a dedicated web-based security scanning service for MCP servers. It's a completely separate tool from MCP-Scan with its own feature set.
+
+**Key Features:**
+- Web-based vulnerability scanning for MCP servers
+- Submit GitHub repository URLs for scanning
+- Detailed reports on security issues
+- Comprehensive knowledge base with vulnerability taxonomies 
+- Remediation guidance for identified vulnerabilities
+- Continuous monitoring options for enterprise users
+
+**Access:**
+Available via the [MCPScan.ai](https://mcpscan.ai) website
+
+### Semgrep MCP
+
+Semgrep MCP is a server that integrates Semgrep's powerful static analysis capabilities with MCP, allowing you to scan code for security vulnerabilities directly through MCP tools.
+
+**Key Features:**
+- Scans code for security vulnerabilities, bugs, and code quality issues
+- Uses Semgrep's extensive rule sets and pattern matching
+- Integrates with various MCP clients (VSCode, Cursor, Claude Desktop, etc.)
+- Provides detailed scan results and remediation guidance
+
+### Invariant Guardrails
+
+Invariant Guardrails provides a layer of protection against prompt injection and other attacks on LLM-based applications, including MCPs.
+
+**Key Features:**
+- Defends against prompt injection attacks
+- Provides real-time monitoring and detection
+- Offers policy-based controls for LLM interactions
+- Integrates with existing security workflows
+
+## <Icon icon="table" iconType="solid" /> Security Tools Comparison
+
+| Feature | MCP-Scan | MCPScan.ai | Semgrep MCP | Invariant Guardrails |
+|---------|----------|------------|-------------|----------------------|
+| **Provider** | Invariant Labs | mcpscan.ai | Semgrep | Invariant Labs |
+| **Primary Focus** | CLI-based MCP server security scanning | Web-based MCP vulnerability scanning | Code vulnerability scanning | LLM interaction security |
+| **Installation/Access** | `uvx mcp-scan@latest` | Web service | `uvx semgrep-mcp` | API integration |
+| **Detects Prompt Injection** | ✅ | ✅ | ❌ | ✅ |
+| **Detects Tool Poisoning** | ✅ | ✅ | ❌ | ✅ |
+| **Code Vulnerability Scanning** | ❌ | ✅ | ✅ | ❌ |
+| **Tool Description Inspection** | ✅ | ✅ | ❌ | ❌ |
+| **Cross-Origin Protection** | ✅ | ✅ | ❌ | ✅ |
+| **Continuous Monitoring** | ❌ | ✅ (Enterprise) | ❌ | ✅ |
+| **Knowledge Base** | ❌ | ✅ | ❌ | ❌ |
+| **License** | Apache-2.0 | Commercial | MIT | Commercial |
+
+## <Icon icon="shield-check" iconType="solid" /> Implementation Best Practices
+
+<Tip>
+**Security Recommendation**  
+Use multiple security tools in combination for comprehensive protection. Choose MCP-Scan (CLI tool) or MCPScan.ai (web service) for MCP vulnerability scanning, Semgrep for code vulnerability detection, and Invariant Guardrails for runtime protection against attacks.
+</Tip>
+
+For optimal implementation of these security tools:
+
+1. **Regular Scanning**: Run MCP-Scan CLI tool or use the MCPScan.ai web service regularly to detect new vulnerabilities
+2. **Code Review**: Use Semgrep MCP during development to catch security issues early
+3. **Runtime Protection**: Implement Invariant Guardrails for active protection against prompt injection
+4. **Keep Updated**: Follow security updates for all MCP tools and libraries
+5. **Whitelist Tools**: Use MCP-Scan's whitelist feature to authorize verified tools
+6. **Continuous Monitoring**: For production environments, consider MCPScan.ai's enterprise monitoring option 

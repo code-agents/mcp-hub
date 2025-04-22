@@ -67,9 +67,9 @@
                 "pages": ["marketplaces/overview"]
               },
               {
-                "group": "Best Practices",
+                "group": "Security",
                 "icon": "shield-halved",
-                "pages": ["security/overview"]
+                "pages": ["security/overview", "security/tools"]
               }
             ]
           }
@@ -132,7 +132,7 @@
                 "pages": ["marketplaces/ja/overview"]
               },
               {
-                "group": "ベストプラクティス",
+                "group": "セキュリティ",
                 "icon": "shield-halved",
                 "pages": ["security/ja/overview"]
               }
