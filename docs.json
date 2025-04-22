@@ -32,6 +32,11 @@
                 "pages": ["values/overview"]
               },
               {
+                "group": "Documentation",
+                "icon": "book",
+                "pages": ["doc-generators/overview", "doc-generators/mcp-compatible-generators", "doc-generators/github-powered-servers", "doc-generators/custom-doc-generators"]
+              },
+              {
                 "group": "Server Frameworks",
                 "icon": "server",
                 "pages": ["server-frameworks/comparison"]
@@ -55,11 +60,6 @@
                 "group": "Infrastructure",
                 "icon": "gears",
                 "pages": ["hosting/overview", "servers/overview"]
-              },
-              {
-                "group": "Documentation",
-                "icon": "book",
-                "pages": ["doc-generators/overview", "doc-generators/mcp-compatible-generators", "doc-generators/github-powered-servers", "doc-generators/custom-doc-generators"]
               },
               {
                 "group": "Marketplaces",
@@ -102,6 +102,11 @@
                 "pages": ["values/ja/overview"]
               },
               {
+                "group": "ドキュメント",
+                "icon": "book",
+                "pages": ["doc-generators/ja/overview"]
+              },
+              {
                 "group": "サーバーフレームワーク",
                 "icon": "server",
                 "pages": ["server-frameworks/ja/comparison"]
@@ -125,11 +130,6 @@
                 "group": "インフラストラクチャー",
                 "icon": "gears",
                 "pages": ["hosting/ja/overview", "servers/ja/overview"]
-              },
-              {
-                "group": "ドキュメント",
-                "icon": "book",
-                "pages": ["doc-generators/ja/overview"]
               },
               {
                 "group": "UIコンポーネント",
