@@ -24,7 +24,7 @@
               {
                 "group": "News & Updates",
                 "icon": "newspaper",
-                "pages": ["docs/changelog"]
+                "pages": ["docs/news"]
               },
               {
                 "group": "About MCPVerified",
@@ -87,9 +87,9 @@
                 "pages": ["ja/introduction"]
               },
               {
-                "group": "ニュースと更新",
+                "group": "ニュース",
                 "icon": "newspaper",
-                "pages": ["docs/changelog"]
+                "pages": ["docs/ja/news"]
               },
               {
                 "group": "MCPVerifiedについて",
