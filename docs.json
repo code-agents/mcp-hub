@@ -15,7 +15,7 @@
         "language": "en",
         "groups": [
           {
-            "group": "Contents",
+            "group": "Learn",
             "pages": [
               {
                 "group": "Getting Started",
@@ -31,7 +31,12 @@
                 "group": "About MCPVerified",
                 "icon": "circle-info",
                 "pages": ["values/overview"]
-              },
+              }
+            ]
+          },
+          {
+            "group": "Develop",
+            "pages": [
               {
                 "group": "Documentation",
                 "icon": "book",
@@ -58,16 +63,6 @@
                 "pages": ["auth/overview"]
               },
               {
-                "group": "Infrastructure",
-                "icon": "gears",
-                "pages": ["hosting/overview", "servers/overview"]
-              },
-              {
-                "group": "Marketplaces",
-                "icon": "cart-shopping",
-                "pages": ["marketplaces/overview"]
-              },
-              {
                 "group": "UI Components",
                 "icon": "palette",
                 "pages": ["ui/overview"]
@@ -78,6 +73,21 @@
                 "pages": ["security/overview", "security/tools"]
               }
             ]
+          },
+          {
+            "group": "Deploy & Ecosystem",
+            "pages": [
+              {
+                "group": "Infrastructure",
+                "icon": "gears",
+                "pages": ["hosting/overview", "servers/overview"]
+              },
+              {
+                "group": "Marketplaces",
+                "icon": "cart-shopping",
+                "pages": ["marketplaces/overview"]
+              }
+            ]
           }
         ]
       },
@@ -85,7 +95,7 @@
         "language": "ja",
         "groups": [
           {
-            "group": "目次",
+            "group": "学ぶ",
             "pages": [
               {
                 "group": "はじめに",
@@ -101,7 +111,12 @@
                 "group": "MCPVerifiedについて",
                 "icon": "circle-info",
                 "pages": ["values/ja/overview"]
-              },
+              }
+            ]
+          },
+          {
+            "group": "開発",
+            "pages": [
               {
                 "group": "ドキュメント",
                 "icon": "book",
@@ -128,24 +143,29 @@
                 "pages": ["auth/ja/overview"]
               },
               {
-                "group": "インフラストラクチャー",
-                "icon": "gears",
-                "pages": ["hosting/ja/overview", "servers/ja/overview"]
-              },
-              {
                 "group": "UIコンポーネント",
                 "icon": "palette",
                 "pages": ["ui/ja/overview"]
               },
               {
-                "group": "エコシステム",
-                "icon": "cart-shopping",
-                "pages": ["marketplaces/ja/overview"]
-              },
-              {
                 "group": "セキュリティ",
                 "icon": "shield-halved",
                 "pages": ["security/ja/overview", "security/ja/tools"]
+              }
+            ]
+          },
+          {
+            "group": "インフラとエコシステム",
+            "pages": [
+              {
+                "group": "インフラストラクチャー",
+                "icon": "gears",
+                "pages": ["hosting/ja/overview", "servers/ja/overview"]
+              },
+              {
+                "group": "エコシステム",
+                "icon": "cart-shopping",
+                "pages": ["marketplaces/ja/overview"]
               }
             ]
           }

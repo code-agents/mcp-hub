@@ -15,6 +15,9 @@ Sometimes you don't *write* the docs yourself – you simply want the full, up�
 
 ### <Icon icon="rocket" iconType="solid" /> Context7
 
+![Context7](https://context7.com/opengraph-image.png?fcbbae99526c7ed1)
+
+
 **Context7** automatically ingests **popular open‑source libraries** (and many **private ones** too) and exposes them as **remote MCP servers**.
 
 <Callout type="info">
@@ -96,6 +99,8 @@ The AI will then **dynamically query Context7** for relevant Three.js documentat
 
 ### <Icon icon="code-branch" iconType="solid" /> GitMCP.io
 
+![GitMCP](https://gitmcp.io/img/OG.png)
+
 [**GitMCP**](https://gitmcp.io) lets you turn **any public GitHub repository** into a fully‑featured MCP server just by changing the domain from `github.com` → `gitmcp.io` (or `github.io` → `gitmcp.io`).  **No build step, no package installs.**
 
 <Callout type="tip">
@@ -162,7 +167,19 @@ Once either MCP server is configured, the following **single‑shot prompt** in 
 
 ### <Icon icon="code-compare" iconType="solid" /> Side‑by‑Side Result (GitMCP vs. No GitMCP)
 
-<iframe
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video"
+  src="gitmcp-threejs.mp4"
+  title="GitMCP vs No GitMCP – Three.js demo"
+  width="550"
+  height="206"
+></video>
+
+{/* <iframe
   src="gitmcp-threejs.mp4"
   title="GitMCP vs No GitMCP – Three.js demo"
   width="550"
@@ -170,7 +187,7 @@ Once either MCP server is configured, the following **single‑shot prompt** in 
   allow="autoplay; fullscreen;"
   autoplay
   style={{ width: '100%', height: 'auto', aspectRatio: '2872/1080', border: '0', borderRadius: '0.5rem' }}
-></iframe>
+></iframe> */}
 
 <Callout type="info">
   <Icon icon="info-circle" iconType="solid" /> **Why it matters** – by streaming the full Three.js documentation on demand, GitMCP gives the LLM precise API details (e.g. `GLTFLoader`, `DirectionalLight.castShadow`, `EffectComposer`) that would otherwise be unavailable or outdated, resulting in dramatically higher‑quality code generation.
