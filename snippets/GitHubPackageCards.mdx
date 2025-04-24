@@ -14,7 +14,9 @@ export const GitHubPackageCards = ({ packages }) => (
           <img alt="GitHub Repo stars" src={`https://img.shields.io/github/stars/${repoPath}?style=flat`} />
           <img alt="GitHub License" src={`https://img.shields.io/github/license/${repoPath}?style=flat`} />
           <img alt="GitHub last commit" src={`https://img.shields.io/github/last-commit/${repoPath}?style=flat`} />
-          <img alt="NPM Downloads" src={`https://img.shields.io/npm/dw/${npmPackage}?style=flat`} />
+          {pkg.npmPackage && (
+            <img alt="NPM Downloads" src={`https://img.shields.io/npm/dw/${npmPackage}?style=flat`} />
+          )}
         </Card>
       );
     })}

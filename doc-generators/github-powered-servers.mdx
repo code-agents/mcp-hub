@@ -5,15 +5,35 @@ icon: "github"
 iconType: "brands"
 ---
 
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx'
+
 Sometimes you don't *write* the docs yourself – you simply want the full, up‑to‑date documentation of an **open‑source library on GitHub** available to your AI assistant. The community projects below turn **_any_ repository into a remote MCP server** that streams documentation on demand.
 
 <Callout type="warning">
   <Icon icon="clock" iconType="solid" /> **First-Time Processing** – If a repository hasn't been previously indexed by Context7 or GitMCP, it may take some time (typically a few minutes) for the initial processing to complete as the system performs autoindexing and RAG preparation of the content.
 </Callout>
 
-## <Icon icon="toolbox" iconType="solid" /> Available Tools
+## <Icon icon="toolbox" iconType="solid" /> Available Services
 
-### <Icon icon="rocket" iconType="solid" /> Context7
+<GitHubPackageCards
+  packages={[
+    {
+      owner: "upstash",
+      repo: "context7",
+      title: "Context7"
+    },
+    {
+      owner: "idosal",
+      repo: "git-mcp",
+      title: "GitMCP.io"
+    }
+  ]
+  }
+/>
+
+---
+
+## <Icon icon="rocket" iconType="solid" /> Context7
 
 ![Context7](https://context7.com/opengraph-image.png?fcbbae99526c7ed1)
 
@@ -97,7 +117,7 @@ Use context7
 
 The AI will then **dynamically query Context7** for relevant Three.js documentation as it helps you.
 
-### <Icon icon="code-branch" iconType="solid" /> GitMCP.io
+## <Icon icon="code-branch" iconType="solid" /> GitMCP.io
 
 ![GitMCP](https://gitmcp.io/img/OG.png)
 
@@ -178,16 +198,6 @@ Once either MCP server is configured, the following **single‑shot prompt** in 
   width="550"
   height="206"
 ></video>
-
-{/* <iframe
-  src="gitmcp-threejs.mp4"
-  title="GitMCP vs No GitMCP – Three.js demo"
-  width="550"
-  height="206"
-  allow="autoplay; fullscreen;"
-  autoplay
-  style={{ width: '100%', height: 'auto', aspectRatio: '2872/1080', border: '0', borderRadius: '0.5rem' }}
-></iframe> */}
 
 <Callout type="info">
   <Icon icon="info-circle" iconType="solid" /> **Why it matters** – by streaming the full Three.js documentation on demand, GitMCP gives the LLM precise API details (e.g. `GLTFLoader`, `DirectionalLight.castShadow`, `EffectComposer`) that would otherwise be unavailable or outdated, resulting in dramatically higher‑quality code generation.

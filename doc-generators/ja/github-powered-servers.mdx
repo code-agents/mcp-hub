@@ -5,13 +5,33 @@ icon: "github"
 iconType: "brands"
 ---
 
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx'
+
 場合によっては、ドキュメントを自分で*作成*するのではなく、**GitHubにあるオープンソースライブラリの最新の完全なドキュメント**をAIアシスタントが利用できるようにしたいことがあります。以下のコミュニティプロジェクトは、**_どんな_リポジトリでもリモートMCPサーバーに変換**し、オンデマンドでドキュメントをストリーミングできるようにします。
 
 <Callout type="warning">
   <Icon icon="clock" iconType="solid" /> **初回処理時間** – リポジトリがContext7またはGitMCPによって以前にインデックス化されていない場合、システムが自動インデックス化とRAG準備を実行するため、初期処理が完了するまでに時間（通常数分）がかかることがあります。
 </Callout>
 
-## <Icon icon="toolbox" iconType="solid" /> 利用可能なツール
+## <Icon icon="toolbox" iconType="solid" /> 利用可能なサービス
+
+<GitHubPackageCards
+  packages={[
+    {
+      owner: "upstash",
+      repo: "context7",
+      title: "Context7"
+    },
+    {
+      owner: "idosal",
+      repo: "git-mcp",
+      title: "GitMCP.io"
+    }
+  ]
+  }
+/>
+
+---
 
 ### <Icon icon="rocket" iconType="solid" /> Context7
 
@@ -165,15 +185,17 @@ AIは回答を提供する際に、**Context7に対して動的にThree.jsのド
 
 ### <Icon icon="code-compare" iconType="solid" /> 並べて比較した結果（GitMCP vs. GitMCPなし）
 
-<iframe
-  src="../gitmcp-threejs.mp4"
-  title="GitMCP vs GitMCPなし – Three.jsデモ"
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video"
+  src="gitmcp-threejs.mp4"
+  title="GitMCP vs No GitMCP – Three.js demo"
   width="550"
   height="206"
-  allow="autoplay; fullscreen;"
-  autoplay
-  style={{ width: '100%', height: 'auto', aspectRatio: '2872/1080', border: '0', borderRadius: '0.5rem' }}
-></iframe>
+></video>
 
 <Callout type="info">
   <Icon icon="info-circle" iconType="solid" /> **なぜ重要か** – GitMCPは完全なThree.jsドキュメントをオンデマンドでストリーミングすることで、LLMに正確なAPI詳細（例：`GLTFLoader`、`DirectionalLight.castShadow`、`EffectComposer`など）を提供します。これらの情報は通常、利用できないか古い情報となっているため、大幅に高品質なコード生成が可能になります。
