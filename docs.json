@@ -20,7 +20,7 @@
               {
                 "group": "Getting Started",
                 "icon": "rocket",
-                "pages": ["introduction", "environment"]
+                "pages": ["introduction", "environment/overview"]
               },
               {
                 "group": "News & Updates",
@@ -100,7 +100,7 @@
               {
                 "group": "はじめに",
                 "icon": "rocket",
-                "pages": ["ja/introduction", "ja/environment"]
+                "pages": ["ja/introduction", "environment/ja/overview"]
               },
               {
                 "group": "ニュース",
