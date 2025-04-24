@@ -1,0 +1,22 @@
+export const GitHubPackageCards = ({ packages }) => (
+  <CardGroup>
+    {packages.map((pkg) => {
+      const repoPath = `${pkg.owner}/${pkg.repo}`;
+      const npmPackage = pkg.npmPackage || pkg.repo;
+      
+      return (
+        <Card 
+          key={repoPath}
+          title={pkg.title || npmPackage} 
+          href={`https://github.com/${repoPath}`} 
+          img={`https://opengraph.githubassets.com/1/${repoPath}`}
+        >
+          <img alt="GitHub Repo stars" src={`https://img.shields.io/github/stars/${repoPath}?style=flat`} />
+          <img alt="GitHub License" src={`https://img.shields.io/github/license/${repoPath}?style=flat`} />
+          <img alt="GitHub last commit" src={`https://img.shields.io/github/last-commit/${repoPath}?style=flat`} />
+          <img alt="NPM Downloads" src={`https://img.shields.io/npm/dw/${npmPackage}?style=flat`} />
+        </Card>
+      );
+    })}
+  </CardGroup>
+); 

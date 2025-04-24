@@ -1,0 +1,62 @@
+---
+title: 'GitHub Package Cards Example'
+---
+
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx';
+
+# GitHub Package Cards Example
+
+This example demonstrates how to use the `GitHubPackageCards` reusable component.
+
+<GitHubPackageCards 
+  packages={[
+    {
+      owner: "modelcontextprotocol",
+      repo: "typescript-sdk",
+      title: "@modelcontextprotocol/sdk",
+      npmPackage: "@modelcontextprotocol/sdk"
+    },
+    {
+      owner: "cloudflare",
+      repo: "agents",
+      title: "Cloudflare agents",
+      npmPackage: "agents"
+    },
+    {
+      owner: "punkpeye",
+      repo: "fastmcp",
+      title: "fastmcp",
+      npmPackage: "fastmcp"
+    },
+    {
+      owner: "QuantGeekDev",
+      repo: "mcp-framework",
+      title: "mcp-framework",
+      npmPackage: "mcp-framework"
+    }
+  ]}
+/>
+
+## How to Use
+
+To use this component in your MDX files:
+
+1. Import the component:
+```jsx
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx';
+```
+
+2. Use the component with an array of GitHub repositories:
+```jsx
+<GitHubPackageCards 
+  packages={[
+    {
+      owner: "owner-name",      // GitHub owner/organization
+      repo: "repo-name",        // GitHub repository name
+      title: "Display Title",   // Optional: Custom title (defaults to npmPackage or repo)
+      npmPackage: "package-name" // Optional: npm package name (defaults to repo name)
+    }
+    // Add more packages as needed
+  ]}
+/>
+``` 

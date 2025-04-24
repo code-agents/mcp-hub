@@ -5,6 +5,8 @@ icon: "chart-bar"
 iconType: "solid"
 ---
 
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx'
+
 # <Icon icon="chart-bar" iconType="solid" color="#3B82F6" /> MCPサーバーフレームワーク比較
 
 <Callout type="info">
@@ -15,20 +17,50 @@ iconType: "solid"
 
 このガイドは、主な特長に基づいてフレームワークを素早く選択するのに役立ちます：
 
-<Cards>
-  <Card title="@modelcontextprotocol/sdk" href="#overview-philosophy">
-    <Icon icon="code" iconType="solid" /> **選ぶポイント:** 公式の仕様準拠の実装で最大限の制御が必要な場合。基礎的な作業や厳格な準拠が最も重要な場合に最適です。
-  </Card>
-  <Card title="Cloudflare agents" href="#overview-philosophy">
-    <Icon icon="cloud" iconType="solid" /> **選ぶポイント:** 特にCloudflareのエッジネットワーク上でステートフルなAIエージェントをデプロイする場合。Cloudflareとの統合と管理されたインフラを活用できます。
-  </Card>
-  <Card title="fastmcp" href="#overview-philosophy">
-    <Icon icon="tachometer-alt" iconType="solid" /> **選ぶポイント:** セッション管理、ストリーミング、本番環境向け機能（認証、ロギングなど）が重要な場合。すぐに使える豊富な機能セットを提供します。
-  </Card>
-  <Card title="mcp-framework" href="#overview-philosophy">
-    <Icon icon="laptop-code" iconType="solid" /> **選ぶポイント:** 規約よりも設定、迅速な開発、CLIツールを重視する場合。公式SDKの上に構築され、開発者体験を重視しています。
-  </Card>
-</Cards>
+<Accordion title="@modelcontextprotocol/sdk" icon="code" iconType="solid">
+  **選ぶポイント:** 公式の仕様準拠の実装で最大限の制御が必要な場合。基礎的な作業や厳格な準拠が最も重要な場合に最適です。
+</Accordion>
+
+<Accordion title="Cloudflare agents" icon="cloud" iconType="solid">
+  **選ぶポイント:** 特にCloudflareのエッジネットワーク上でステートフルなAIエージェントをデプロイする場合。Cloudflareとの統合と管理されたインフラを活用できます。
+</Accordion>
+
+<Accordion title="fastmcp" icon="tachometer-alt" iconType="solid">
+  **選ぶポイント:** セッション管理、ストリーミング、本番環境向け機能（認証、ロギングなど）が重要な場合。すぐに使える豊富な機能セットを提供します。
+</Accordion>
+
+<Accordion title="mcp-framework" icon="laptop-code" iconType="solid">
+  **選ぶポイント:** 規約よりも設定、迅速な開発、CLIツールを重視する場合。公式SDKの上に構築され、開発者体験を重視しています。
+</Accordion>
+
+<GitHubPackageCards 
+  packages={[
+    {
+      owner: "modelcontextprotocol",
+      repo: "typescript-sdk",
+      title: "@modelcontextprotocol/sdk",
+      npmPackage: "@modelcontextprotocol/sdk"
+    },
+    {
+      owner: "cloudflare",
+      repo: "agents",
+      title: "Cloudflare agents",
+      npmPackage: "agents"
+    },
+    {
+      owner: "punkpeye",
+      repo: "fastmcp",
+      title: "fastmcp",
+      npmPackage: "fastmcp"
+    },
+    {
+      owner: "QuantGeekDev",
+      repo: "mcp-framework",
+      title: "mcp-framework",
+      npmPackage: "mcp-framework"
+    }
+  ]}
+/>
 
 ## <Icon icon="list" iconType="solid" /> 機能比較
 

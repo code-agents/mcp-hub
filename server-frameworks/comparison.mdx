@@ -5,6 +5,8 @@ icon: "chart-bar"
 iconType: "solid"
 ---
 
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx'
+
 # <Icon icon="chart-bar" iconType="solid" color="#3B82F6" /> MCP Server Frameworks Comparison
 
 <Callout type="info">
@@ -15,20 +17,50 @@ iconType: "solid"
 
 This guide helps you quickly choose a framework based on its primary strengths:
 
-<Cards>
-  <Card title="@modelcontextprotocol/sdk" href="#overview-philosophy">
-    <Icon icon="code" iconType="solid" /> **Choose if:** You need the official, spec-compliant implementation with maximum control. Ideal for foundational work or when strict adherence is paramount.
-  </Card>
-  <Card title="Cloudflare agents" href="#overview-philosophy">
-    <Icon icon="cloud" iconType="solid" /> **Choose if:** You're deploying stateful AI agents, especially on Cloudflare's edge network. Benefits from Cloudflare integration and managed infrastructure.
-  </Card>
-  <Card title="fastmcp" href="#overview-philosophy">
-    <Icon icon="tachometer-alt" iconType="solid" /> **Choose if:** Session management, streaming, and production-ready features (like auth, logging) are critical. Offers a rich feature set out-of-the-box.
-  </Card>
-  <Card title="mcp-framework" href="#overview-philosophy">
-    <Icon icon="laptop-code" iconType="solid" /> **Choose if:** You prefer convention-over-configuration, rapid development, and CLI tooling. Built on the official SDK, focusing on developer experience.
-  </Card>
-</Cards>
+<Accordion title="@modelcontextprotocol/sdk" icon="code" iconType="solid">
+  **Choose if:** You need the official, spec-compliant implementation with maximum control. Ideal for foundational work or when strict adherence is paramount.
+</Accordion>
+
+<Accordion title="Cloudflare agents" icon="cloud" iconType="solid">
+  **Choose if:** You're deploying stateful AI agents, especially on Cloudflare's edge network. Benefits from Cloudflare integration and managed infrastructure.
+</Accordion>
+
+<Accordion title="fastmcp" icon="meter" iconType="solid">
+  **Choose if:** Session management, streaming, and production-ready features (like auth, logging) are critical. Offers a rich feature set out-of-the-box.
+</Accordion>
+
+<Accordion title="mcp-framework" icon="laptop-code" iconType="solid">
+  **Choose if:** You prefer convention-over-configuration, rapid development, and CLI tooling. Built on the official SDK, focusing on developer experience.
+</Accordion>
+
+<GitHubPackageCards 
+  packages={[
+    {
+      owner: "modelcontextprotocol",
+      repo: "typescript-sdk",
+      title: "@modelcontextprotocol/sdk",
+      npmPackage: "@modelcontextprotocol/sdk"
+    },
+    {
+      owner: "cloudflare",
+      repo: "agents",
+      title: "Cloudflare agents",
+      npmPackage: "agents"
+    },
+    {
+      owner: "punkpeye",
+      repo: "fastmcp",
+      title: "fastmcp",
+      npmPackage: "fastmcp"
+    },
+    {
+      owner: "QuantGeekDev",
+      repo: "mcp-framework",
+      title: "mcp-framework",
+      npmPackage: "mcp-framework"
+    }
+  ]}
+/>
 
 ## <Icon icon="list" iconType="solid" /> Feature Comparison
 
