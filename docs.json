@@ -45,7 +45,7 @@
               {
                 "group": "Server Frameworks",
                 "icon": "server",
-                "pages": ["server-frameworks/comparison"]
+                "pages": ["server-frameworks/comparison", "server-frameworks/openapi-generators"]
               },
               {
                 "group": "Client Frameworks",
@@ -125,7 +125,7 @@
               {
                 "group": "サーバーフレームワーク",
                 "icon": "server",
-                "pages": ["server-frameworks/ja/comparison"]
+                "pages": ["server-frameworks/ja/comparison", "server-frameworks/ja/openapi-generators"]
               },
               {
                 "group": "クライアントフレームワーク",

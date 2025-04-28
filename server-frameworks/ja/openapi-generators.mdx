@@ -1,0 +1,96 @@
+---
+title: 'OpenAPI → MCP ジェネレーター'
+description: '既存の OpenAPI 仕様から MCP サーバーを自動生成するツール'
+icon: "wand-magic-sparkles"
+iconType: "solid"
+---
+
+import { GitHubPackageCards } from '/snippets/GitHubPackageCards.mdx'
+
+# <Icon icon="wand-magic-sparkles" iconType="solid" color="#8B5CF6" /> 既存の API を MCP サーバーに変換する
+
+多くのチームは **OpenAPI 3.0+** で定義された REST API をすでに運用しています。サーバーフレームワークで一から書き直す代わりに、上流 API へリクエストをプロキシしつつ AI アシスタントとは **Model Context Protocol** (MCP) で通信できる、薄い MCP ラッパーを自動生成できます。
+
+これらのジェネレーターは **既存サービス** を対象としており、[フレームワーク比較](./comparison) は **新規にサーバーを構築** するケースにフォーカスしています。
+
+<Callout type="info">
+  <Icon icon="circle-info" iconType="solid" /> すでに OpenAPI 仕様を持っていて、最小限の工数で MCP 対応したい場合にこれらのツールを使いましょう。
+</Callout>
+
+## <Icon icon="toolbox" iconType="solid" /> 利用可能なジェネレーター
+
+<GitHubPackageCards 
+  packages={[{
+    owner: "harsha-iiiv",
+    repo: "openapi-mcp-generator",
+    title: "openapi-mcp-generator",
+    npmPackage: "openapi-mcp-generator"
+  }]}
+/>
+
+## <Icon icon="rocket" iconType="solid" /> クイックスタート（stdio の例）
+
+```bash
+# グローバルインストール
+npm i -g openapi-mcp-generator
+
+# OpenAPI ファイルから stdio モードの MCP サーバーを生成
+openapi-mcp-generator \
+  --input ./petstore.json \
+  --output ./petstore-mcp
+
+cd petstore-mcp && npm install && npm start
+```
+
+CLI は次の処理を行います:
+
+1. OpenAPI ドキュメントを解析
+2. `@modelcontextprotocol/sdk` を用いた型安全な TypeScript プロジェクトを生成
+3. 検証用に Zod スキーマを生成
+4. `stdio` エントリポイント（オプションで `web` / `streamable-http`）を作成
+5. 簡易 HTML クライアントを同梱
+
+## <Icon icon="check-circle" iconType="solid" color="#10B981" /> 自動生成サーバーを選ぶべきケース
+
+- 既存の **レガシー REST API** をすばやく AI と連携させたい
+- **バックエンドチーム** が MCP の詳細を学習する時間を取りたくない
+- **プロトタイピング** で複数マイクロサービスを短時間で公開したい
+- **一貫性** — OpenAPI と MCP の定義を常に同期させたい
+
+<Warning>
+  生成されたコードはあくまで出発点です。実運用前に認証、ログ、エラーハンドリングなどを強化してください。
+</Warning>
+
+## <Icon icon="chart-bar" iconType="solid" /> 主な機能
+
+| 機能 | openapi-mcp-generator |
+|------|----------------------|
+| **OpenAPI 3.0+ 対応** | ✓ |
+| **トランスポート** (`stdio`, `web` + SSE, `streamable-http`) | ✓ |
+| **認証方式** (API キー, Bearer, Basic, OAuth2) | ✓ |
+| **ランタイム検証 (Zod)** | ✓ |
+| **型安全な TypeScript 出力** | ✓ |
+| **テスト用 HTML クライアント** | ✓ |
+
+## <Icon icon="exclamation-triangle" iconType="solid" color="#F97316" /> 制限と注意点
+
+<Callout type="warning">
+  <Icon icon="triangle-exclamation" iconType="solid" /> **MCP は単なる REST プロキシではありません。** OpenAPI のすべてのエンドポイントを機械的にツール化すると、LLM の性能をむしろ悪化させることがあります。
+</Callout>
+
+LLM の専門家（例: [David Cramer](https://x.com/zeeg/status/1913289979368796671)）は、*OpenAPI-as-MCP* 的な安易な変換には次の問題があると指摘しています:
+
+- **ツール過多:** エンドポイントが数十〜数百あると、類似した名前のツールを LLM が誤選択しがちです。
+- **パラメータ過多:** REST エンドポイントは任意パラメータが多く、UI コンテキスト無しでモデルが入力値を決定しなければなりません。
+- **コンテキスト容量:** 一部モデルはツール説明を ~1kB に制限しており、詳細なドキュメントは切り捨てられます。
+- **レスポンスの冗長さ:** UUID やネストが深い JSON はモデルには解釈しづらい。
+- **抽象度のミスマッチ:** 優れた MCP ツールは「#sales へメッセージを送る」など *意図に近い* 操作単位で設計されるべきです。
+
+<Tip>
+  生成コードを **雛形** として活用し、不要なエンドポイントを削除したり、複雑な操作を LLM 向けに高レベルなツールへラップし直すことを推奨します。
+</Tip>
+
+## <Icon icon="link" iconType="solid" /> 参考リンク
+
+- GitHub: [harsha-iiiv/openapi-mcp-generator](https://github.com/harsha-iiiv/openapi-mcp-generator)
+- NPM: [`openapi-mcp-generator`](https://www.npmjs.com/package/openapi-mcp-generator) 
